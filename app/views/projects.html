@@ -20,5 +20,17 @@
                 </tbody>
             </table>
         </div>
+        <div class="jumbotron col-md-12">
+            <table>
+                <tbody>
+                <tr ng-repeat="user in allUsers">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{user.Username}}</td>
+                    <td>{{user.isAdmin}}</td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
