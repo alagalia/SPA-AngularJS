@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <h1>Projects</h1>
+            <button class="btn-default">Add new project</button>
+        </div>
+        <div class="jumbotron col-md-12">
+            <table>
+                <tbody>
+                <tr ng-repeat="project in allProjects">
+                    <td>{{ $index + 1 }}</td>
+                    <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
+                    <td>{{ project.Lead.Username }}</td>
+                    <td>{{ project.Description }}</td>
+                    <td><a href="#/projects/{{project.Id}}">
+                        <button class="btn-sm">view</button>
+                    </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

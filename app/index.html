@@ -1,0 +1,44 @@
+<html lang="en" ng-app="trackerApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Issue tracker</title>
+    <meta name="description" content="Softuni Issue Trcker">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<!--HEADER-->
+
+<!--MAIN-->
+<div class="container" >
+    <div ng-view>
+    </div>
+</div>
+
+
+<!--FOOTER-->
+<div class="container">
+    <footer>
+
+    </footer>
+</div>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="lib/jquery.noty/jquery.noty.js"></script>
+<script src="js/app.js"></script>
+
+<script src="js/services/authentication-service.js"></script>
+<script src="js/services/notify-service.js"></script>
+<script src="js/services/issues-service.js"></script>
+<script src="js/services/projects-service.js"></script>
+
+<script src="js/controllers/home-controller.js"></script>
+<script src="js/controllers/projects-controller.js"></script>
+<script src="js/controllers/issues-controller.js"></script>
+<script src="js/controllers/projectDetail-controller.js"></script>
+</body>
+</html>

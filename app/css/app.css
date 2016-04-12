@@ -1,0 +1,47 @@
+/* app css stylesheet */
+.border {
+  border: 1px solid grey;
+  padding: 20px;
+}
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+/* -- my CSS --*/
+.userAvarat {
+  width: 24px;
+}
+
+.img-thumbnail {
+  max-width: 10%;
+  margin: 10px 0 -20px 10px
+}
+
+td{
+  padding: 5px;
+}

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Project page</h1>
+        <div class="jumbotron col-md-3">
+            <p>Project Id: {{projectbyId.Id}}</p>
+            <p>Project key: {{projectbyId.ProjectKey}}</p>
+            <p>Project name: {{projectbyId.Name}}</p>
+        </div>
+        <div class="jumbotron col-md-9">
+            <table>
+                <thead>
+                <th>№</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>DueDate</th>
+                <th>Assignee</th>
+                <th>Status</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="issue in issuesById">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ issue.Title}}</td>
+                    <td>{{ issue.Description }}</td>
+                    <td>{{ issue.DueDate}}</td>
+                    <td>{{ issue.Assignee.Username }}</td>
+                    <td>{{ issue.Status.Name }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
