@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-1 border">
+
+        <form name="addProjectForm">
+            <div class="form-group">
+
+
+                <label for="addProjectname">Name</label>
+                <input type="text" class="form-control" id="addProjectname" placeholder="Name"
+                       ng-model="addProject.Name">
+
+                <label for="addProjectDescription">Description</label>
+                <textarea row="5"  class="form-control" id="addProjectDescription"
+                          placeholder="Description" ng-model="addProject.Description">
+
+                </textarea>
+
+                <label for="addProjectKey">ProjectKey</label>
+                <input type="text" class="form-control" id="addProjectKey"
+                       placeholder="ProjectKey" ng-model="addProject.ProjectKey">
+
+
+                <label for="addProjectPriorities"> Priorities multiple select: </label><br>
+                <select name="priorities" id="addProjectPriorities" ng-model="addProject.priorities" multiple>
+                    <option value="1">Low</option>
+                    <option value="2">Urgent</option>
+                </select>
+                <!--<br> multipleSelect = {{addProject.priorities}}<br/>-->
+
+                <br/>
+                <label for="addLabel"> Label </label><br>
+                <select ng-model="addProject.Label" id="addLabel">
+                    <option ng-repeat="label in allLabels" value="{{label.Id}}">{{label.Name}}</option>
+                </select>
+
+                <br/>
+                <label for="addLeadId"> Lead of project: </label><br>
+                <select ng-model="addProject.LeadId" id="addLeadId">
+                    <option ng-repeat="user in allUsers" value="{{user.Username}}">{{user.Username}}</option>
+                </select>
+
+                <br/>
+                <button type="submit" class="btn btn-primary pull-right"
+                        ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
+                        ng-click="addProject(addProject)">Add project
+                </button>
+
+
+        </form>
+    </div>
+</div>
+
+

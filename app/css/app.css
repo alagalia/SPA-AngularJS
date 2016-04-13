@@ -41,7 +41,20 @@
   max-width: 10%;
   margin: 10px 0 -20px 10px
 }
-
+/*--MY--*/
 td{
   padding: 5px;
 }
+
+.suggestion-list li:hover {
+  background:  #eeeeee;
+}
+
+.suggestion-list li:active,
+.suggestion-list li.active {
+  color: #FFFFFF;
+  background: #0099FF;
+  width: 123px;
+}
+
+

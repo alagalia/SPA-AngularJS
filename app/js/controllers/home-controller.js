@@ -15,8 +15,7 @@ trackerApp.controller('HomeCtrl', [
                     $scope.isLoggedInSomeone = true;
                     $location.path('/projects');
                 }, function (err) {
-                    var serverError = err.data.error_description;
-                    notifyService.showError("Login failed", serverError);
+                    notifyService.showError("Login failed", err.statusText);
                 });
         };
 

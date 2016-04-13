@@ -18,7 +18,6 @@ trackerApp
                 };
                 $http(request)
                     .then(function (response) {
-                        console.log(response.data);
                         deferred.resolve(response.data)
                     }, function (err) {
                         deferred.reject(err)
@@ -26,7 +25,7 @@ trackerApp
                 return deferred.promise;
             }
 
-            function getAllUser() {
+            function getAllUsers() {
 
                 var deferred = $q.defer();
                 var request = {
@@ -70,7 +69,7 @@ trackerApp
 
             return {
                 getCurrentUser: getCurrentUser,
-                getAllUser: getAllUser,
+                getAllUsers: getAllUsers,
                 makeAdmin: makeAdmin
             }
         }

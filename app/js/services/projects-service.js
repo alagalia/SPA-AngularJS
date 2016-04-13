@@ -21,6 +21,7 @@ trackerApp
 
                 $http(request)
                     .then(function(response){
+                        console.log(response.data)
                         deferred.resolve(response);
                     },function(err){
                         deferred.reject(err);
@@ -29,6 +30,7 @@ trackerApp
             }
 
 
+            //todo get my projects
             function getMyProjects(){
                 var deferred = $q.defer();
                 var request = {
@@ -47,7 +49,6 @@ trackerApp
                     });
                 return deferred.promise;
             }
-
 
             function getProjectById(id){
                 var deferred = $q.defer();
@@ -68,11 +69,20 @@ trackerApp
                 return deferred.promise;
             }
 
-            function getIssuesByProjectId(id){
+            function addProject(project){
                 var deferred = $q.defer();
+
                 var request = {
-                    method: 'GET',
-                    url: BASE_URL + 'Projects/'+ id + '/Issues',
+                    method: 'POST',
+                    url: BASE_URL + 'projects',
+                    data : {
+                        'Name' : 'Some f name', //project.Name,
+                        'Description' : 'Some f discription', //project.Description,
+                        'ProjectKey' : 'SFN',//project.ProjectKey,
+                        'labels[0].Name' : 'software',
+                        'priorities' : {'Name': 'Low'},
+                        'LeadId' : project.LeadId
+                    },
                     headers: {
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
@@ -87,10 +97,30 @@ trackerApp
                 return deferred.promise;
             }
 
+            function getAllExistingLabels(){
+                var deferred = $q.defer();
+                var request = {
+                    method: 'GET',
+                    url: BASE_URL + 'labels/?filter',
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+                $http(request)
+                    .then(function(response){
+                        deferred.resolve(response.data);
+                    },function(err){
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
+
             return {
                 getAllProjects : getAllProjects,
                 getProjectById : getProjectById,
-                getIssuesByProjectId: getIssuesByProjectId
+                addProject : addProject,
+                getAllExistingLabels : getAllExistingLabels
             }
         }
     ]);

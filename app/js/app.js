@@ -1,10 +1,12 @@
 'use strict';
 
 var trackerApp = angular.module('trackerApp', [
-        'ngRoute'
+        'ngRoute',
     ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
-    .config(['$routeProvider', function ($routeProvider) {
+    .config([
+        '$routeProvider',
+        function ($routeProvider) {
     $routeProvider
         .when('/login', {
             templateUrl: 'views/login.html',
@@ -14,7 +16,7 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/register.html',
             controller: 'HomeCtrl'
         })
-        .when('/wellcome', {
+        .when('/', {
             templateUrl: 'views/wellcome.html'
         })
         .when('/projects', {
@@ -25,5 +27,9 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/project-details.html',
             controller: 'ProjectDetailCtrl'
         })
-        .otherwise({redirectTo: '/wellcome'});
+        .when('/projectsAdd', {
+            templateUrl: 'views/add-project.html',
+            controller: 'ProjectAddCtrl'
+        })
+        .otherwise({redirectTo: '/'});
 }]);

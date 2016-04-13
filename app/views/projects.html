@@ -2,8 +2,17 @@
     <div class="col-md-12">
         <div class="row">
             <h1>Projects</h1>
-            <button class="btn-default">Add new project</button>
+
+            <!--GET CURRENT USER-->
+            <div>
+                <h4>Current user:</h4>
+                <p>{{currentUser.Id}}</p>
+                <p>{{currentUser.Username}} </p>
+                <p>{{currentUser.isAdmin}}</p>
+            </div>
+            <a href="#/projectsAdd"><button class="btn-default">Add new project</button></a>
         </div>
+
         <div class="jumbotron col-md-12">
             <table>
                 <tbody>
@@ -20,17 +29,19 @@
                 </tbody>
             </table>
         </div>
-        <div class="jumbotron col-md-12">
-            <table>
-                <tbody>
-                <tr ng-repeat="user in allUsers">
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{user.Username}}</td>
-                    <td>{{user.isAdmin}}</td>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+
+        <!--GET ALL USERS-->
+        <!--<div class="jumbotron col-md-12">-->
+            <!--<table>-->
+                <!--<tbody>-->
+                <!--<tr ng-repeat="user in allUsers">-->
+                    <!--<td>{{ $index + 1 }}</td>-->
+                    <!--<td>{{user.Username}}</td>-->
+                    <!--<td>{{user.isAdmin}}</td>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
     </div>
 </div>

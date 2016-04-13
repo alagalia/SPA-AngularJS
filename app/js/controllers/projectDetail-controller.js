@@ -3,31 +3,36 @@
 trackerApp
     .controller('ProjectDetailCtrl', [
         '$scope',
+        '$location',
         '$routeParams',
         'projectsService',
+        'issuesService',
         'notifyService',
-        function($scope, $routeParams, projectsService, notifyService){
+        function($scope, $location, $routeParams, projectsService, issuesService, notifyService){
 
-            function getProjectBiId(id){
+            function getProjectById(id){
                 projectsService.getProjectById(id)
                     .then(function (projectById) {
                             $scope.projectbyId = projectById.data;
                         }, function (err) {
-                            var serverError = err.data.error_description;
-                            notifyService.showError("Request failed", serverError);
+                            notifyService.showError("Request "+"'Get project by ID'" +" failed", err.statusText);
                         }
                     );
 
-                projectsService.getIssuesByProjectId(id)
+                issuesService.getIssuesByProjectId(id)
                     .then(function(issuesById){
                         $scope.issuesById = issuesById.data;
                         console.log(issuesById.data)
                     }, function (err) {
-                        var serverError = err.data.error_description;
-                        notifyService.showError("Request failed", serverError);
+                        notifyService.showError("Request 'Get issues' failed", err.statusText);
                     })
             }
+            if(isNaN($routeParams.id)){
+                $location.path('/projects');
+            } else {
+                getProjectById($routeParams.id)
 
-            getProjectBiId($routeParams.id)
+            }
+
         }
 ]);
