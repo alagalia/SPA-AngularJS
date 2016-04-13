@@ -21,16 +21,16 @@
 
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
-                <select name="priorities" id="addProjectPriorities" ng-model="addProject.priorities" multiple>
-                    <option value="1">Low</option>
-                    <option value="2">Urgent</option>
+                <select name="priorities" id="addProjectPriorities" ng-model="addProject.prioritiesAsArray" multiple>
+                    <option value="Low">Low</option>
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
                 </select>
 
                 <br/>
                 <label for="addLabel"> Label </label><br>
-                <select ng-model="addProject.Label" id="addLabel">
-                    <option ng-repeat="label in allLabels" value="{{label.Id}}">{{label.Name}}</option>
-                </select>
+                <input name="namesInput" ng-model="addProject.labelsArray" ng-list id="addLabel">
 
                 <br/>
                 <label for="addLeadId"> Lead of project: </label><br>

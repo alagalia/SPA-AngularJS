@@ -79,7 +79,7 @@ trackerApp
                         'Name' : project.Name,
                         'Description' : project.Description,
                         'ProjectKey' : project.ProjectKey,
-                        'labels' : [{'Name' : 'software'}],
+                        'labels' : project.labels,
                         'priorities' : [{'Name': 'Low'}],
                         'LeadId' : project.LeadId
                     },

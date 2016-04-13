@@ -1,7 +1,7 @@
 'use strict';
 
 var trackerApp = angular.module('trackerApp', [
-        'ngRoute',
+        'ngRoute'
     ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
     .config([

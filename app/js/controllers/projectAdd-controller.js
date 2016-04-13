@@ -15,13 +15,29 @@ trackerApp
 
 
             $scope.addProject = function (project) {
-                projectsService.addProject(project)
-                    .then(function (addedProject) {
-                        notifyService.showInfo("Project added successful");
-                        $location.path('/projects');
-                    }, function (err) {
-                        notifyService.showError("'Add project' failed", err.statusText);
-                    });
+                var labels = project.labelsArray;
+                var priorities = project.prioritiesAsArray;
+
+                project.labels = toObject(labels);
+                project.priorities = toObject(priorities);
+                console.log(project.labels);
+                console.log(project.priorities);
+
+                function toObject(inputArray) {
+                    var outputArrayAsJson = [];
+                    for (var i = 0; i < inputArray.length; ++i)
+                        outputArrayAsJson.push({'Name' : inputArray[i]});
+                    return outputArrayAsJson;
+                }
+
+
+                //projectsService.addProject(project)
+                //    .then(function () {
+                //        notifyService.showInfo("Project added successful");
+                //        $location.path('/projects');
+                //    }, function (err) {
+                //        notifyService.showError("'Add project' failed", err.statusText);
+                //    });
             };
 
             userService.getAllUsers()
@@ -41,6 +57,7 @@ trackerApp
                         notifyService.showError("Request failed", err.statusText);
                     }
                 );
+
 
         }
     ]);
