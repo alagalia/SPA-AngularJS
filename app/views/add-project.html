@@ -4,21 +4,16 @@
         <form name="addProjectForm">
             <div class="form-group">
 
-
                 <label for="addProjectname">Name</label>
                 <input type="text" class="form-control" id="addProjectname" placeholder="Name"
                        ng-model="addProject.Name">
-
                 <label for="addProjectDescription">Description</label>
                 <textarea row="5" class="form-control" id="addProjectDescription"
                           placeholder="Description" ng-model="addProject.Description">
-
                 </textarea>
-
                 <label for="addProjectKey">ProjectKey</label>
                 <input type="text" class="form-control" id="addProjectKey"
-                       placeholder="ProjectKey" ng-model="addProject.ProjectKey">
-
+                       ng-model="addProject.ProjectKey" value="">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities" id="addProjectPriorities" ng-model="addProject.prioritiesAsArray" multiple>

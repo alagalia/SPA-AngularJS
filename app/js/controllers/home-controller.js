@@ -9,8 +9,10 @@ trackerApp.controller('HomeCtrl', [
         $scope.login = function (user) {
             authenticationService.loginUser(user)
                 .then(function (loggedInUser) {
+                    console.log(loggedInUser)
                     notifyService.showInfo("Login successful");
                     sessionStorage['token'] = loggedInUser.access_token;
+                    sessionStorage['userName'] = loggedInUser.userName;
                     $scope.username = loggedInUser.username;
                     $scope.isLoggedInSomeone = true;
                     $location.path('/projects');

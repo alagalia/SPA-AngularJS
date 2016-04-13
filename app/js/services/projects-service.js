@@ -21,7 +21,6 @@ trackerApp
 
                 $http(request)
                     .then(function(response){
-                        console.log(response.data)
                         deferred.resolve(response);
                     },function(err){
                         deferred.reject(err);
