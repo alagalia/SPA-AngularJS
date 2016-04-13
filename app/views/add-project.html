@@ -10,7 +10,7 @@
                        ng-model="addProject.Name">
 
                 <label for="addProjectDescription">Description</label>
-                <textarea row="5"  class="form-control" id="addProjectDescription"
+                <textarea row="5" class="form-control" id="addProjectDescription"
                           placeholder="Description" ng-model="addProject.Description">
 
                 </textarea>
@@ -25,7 +25,6 @@
                     <option value="1">Low</option>
                     <option value="2">Urgent</option>
                 </select>
-                <!--<br> multipleSelect = {{addProject.priorities}}<br/>-->
 
                 <br/>
                 <label for="addLabel"> Label </label><br>
@@ -36,7 +35,7 @@
                 <br/>
                 <label for="addLeadId"> Lead of project: </label><br>
                 <select ng-model="addProject.LeadId" id="addLeadId">
-                    <option ng-repeat="user in allUsers" value="{{user.Username}}">{{user.Username}}</option>
+                    <option ng-repeat="user in allUsers" value="{{user.Id}}">{{user.Username}}</option>
                 </select>
 
                 <br/>
@@ -44,8 +43,7 @@
                         ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
                         ng-click="addProject(addProject)">Add project
                 </button>
-
-
+            </div>
         </form>
     </div>
 </div>

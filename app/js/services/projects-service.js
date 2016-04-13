@@ -76,11 +76,11 @@ trackerApp
                     method: 'POST',
                     url: BASE_URL + 'projects',
                     data : {
-                        'Name' : 'Some f name', //project.Name,
-                        'Description' : 'Some f discription', //project.Description,
-                        'ProjectKey' : 'SFN',//project.ProjectKey,
-                        'labels[0].Name' : 'software',
-                        'priorities' : {'Name': 'Low'},
+                        'Name' : project.Name,
+                        'Description' : project.Description,
+                        'ProjectKey' : project.ProjectKey,
+                        'labels' : [{'Name' : 'software'}],
+                        'priorities' : [{'Name': 'Low'}],
                         'LeadId' : project.LeadId
                     },
                     headers: {

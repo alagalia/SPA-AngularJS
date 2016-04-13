@@ -3,10 +3,11 @@
 trackerApp
     .controller('ProjectAddCtrl', [
         '$scope',
+        '$location',
         'projectsService',
         'notifyService',
         'userService',
-        function ($scope, projectsService, notifyService, userService, UserCtrl) {
+        function ($scope, $location, projectsService, notifyService, userService, UserCtrl) {
 
             $scope.priorities = {
                 multipleSelect: []
@@ -20,7 +21,6 @@ trackerApp
                         $location.path('/projects');
                     }, function (err) {
                         notifyService.showError("'Add project' failed", err.statusText);
-                        console.log(err.config.data.priorities)
                     });
             };
 
