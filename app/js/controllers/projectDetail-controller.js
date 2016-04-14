@@ -10,12 +10,14 @@ trackerApp
         'notifyService',
         function ($scope, $location, $routeParams, projectsService, issuesService, notifyService) {
 
+
+
             function getProjectById(id) {
                 projectsService.getProjectById(id)
-                    .then(function (projectById) {
-                            $scope.projectbyId = projectById.data;
-                            $scope.isLeader = sessionStorage.userName === projectById.data.Lead.Username;
-                        }, function (err) {
+                    .then(function (project) {
+                            $scope.projectbyId = project.data;
+                            $scope.isLeader = sessionStorage.userName === project.data.Lead.Username;
+                    }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
                         }
                     );
