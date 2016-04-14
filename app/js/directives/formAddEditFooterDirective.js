@@ -1,7 +1,7 @@
 trackerApp
     .directive('formDirective', function(){
         return {
-            templateUrl : 'views/addEditFooterDirective.html',
+            templateUrl : 'views/addEditFooterTemplate.html',
             controller : 'CommonCtrl'
         }
     });

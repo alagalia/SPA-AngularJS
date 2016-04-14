@@ -79,7 +79,7 @@ trackerApp
                         'Description' : project.Description,
                         'ProjectKey' : project.ProjectKey,
                         'labels' : project.labels,
-                        'priorities' : [{'Name': 'Low'}],
+                        'priorities' : project.priorities,
                         'LeadId' : project.LeadId
                     },
                     headers: {
@@ -95,6 +95,33 @@ trackerApp
                     });
                 return deferred.promise;
             }
+
+            function editProject(project){
+                var deferred = $q.defer();
+                var request = {
+                    method: 'PUT',
+                    url: BASE_URL + 'projects/'+ project.Id,
+                    data : {
+                        'Name' : project.Name,
+                        'Description' : project.Description,
+                        'labels' : project.labels,
+                        'priorities' : project.priorities,
+                        'LeadId' : project.LeadId
+                    },
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+
+                $http(request)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    },function(err){
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
 
             function getAllExistingLabels(){
                 var deferred = $q.defer();
@@ -115,10 +142,12 @@ trackerApp
             }
 
 
+
             return {
                 getAllProjects : getAllProjects,
                 getProjectById : getProjectById,
                 addProject : addProject,
+                editProject: editProject,
                 getAllExistingLabels : getAllExistingLabels
             }
         }

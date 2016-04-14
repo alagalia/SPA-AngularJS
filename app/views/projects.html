@@ -7,9 +7,9 @@
             <!--GET CURRENT USER-->
             <div>
                 <h4>Current user:</h4>
-                <p>{{currentUser.Id}}</p>
-                <p>{{currentUser.Username}} </p>
-                <p>{{currentUser.isAdmin}}</p>
+                <p>Name : {{currentUser.Username}} </p>
+                <p>ID: {{currentUser.Id}}</p>
+                <p>Status: {{currentUser.isAdmin | admin}}</p>
             </div>
             <a href="#/add">
                 <button class="btn-default">Add new project</button>

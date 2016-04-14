@@ -1,0 +1,27 @@
+<!--<label for="addLabel"> Label </label><br>-->
+<!--<input type="text" id="addLabel"-->
+       <!--placeholder="Search"-->
+       <!--ng-model="project.labels"-->
+       <!--ng-keydown="showLabels(search.text)"-->
+       <!--ng-keyup="checkTextLenght(search.text)"-->
+       <!--ng-list="&#10;" ng-trim="false">-->
+<!--<div class="autocomplete">-->
+    <!--<div ng-hide="hide">-->
+        <!--<p ng-repeat="label in allLabels | filter:search.text"-->
+           <!--ng-bind-html="label.Name | highlight:search.text">-->
+        <!--</p>-->
+    <!--</div>-->
+<!--</div>-->
+
+<br/>
+<label for="addLabel"> Label </label><br>
+<input name="namesInput" ng-model="projectbyId.labels" ng-list id="addLabel">
+
+
+
+
+<br/>
+<label for="addLeadId"> Lead of project: </label><br>
+<select ng-model="projectbyId.LeadId" id="addLeadId">
+    <option ng-repeat="user in allUsers" value="{{user.Id}}">{{user.Username}}</option>
+</select>

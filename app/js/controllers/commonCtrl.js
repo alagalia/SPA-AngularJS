@@ -40,9 +40,7 @@ trackerApp
                 $scope.hide = false;
             };
             $scope.checkTextLenght = function(text){
-                if(text.length==0){
-                    $scope.hide = true;
-                }
+               console.log(text)
             }
         }
     ]);

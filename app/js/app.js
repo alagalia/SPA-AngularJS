@@ -29,7 +29,7 @@ var trackerApp = angular.module('trackerApp', [
         })
         .when('/add', {
             templateUrl: 'views/add-project.html',
-            controller: 'ProjectAddCtrl'
+            controller: 'ProjectsCtrl'
         })
         .when('/projects/:id/edit', {
             templateUrl: 'views/edit-project.html',

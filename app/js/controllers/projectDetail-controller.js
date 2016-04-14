@@ -13,7 +13,6 @@ trackerApp
             var getProjectById = function getProjectById(id) {
                 projectsService.getProjectById(id)
                     .then(function (project) {
-
                             $scope.projectbyId = project.data;
                             $scope.isLeader = sessionStorage.userName === project.data.Lead.Username;
                     }, function (err) {

@@ -6,20 +6,30 @@
             <div class="form-group">
 
                 <label for="addProjectname">Name</label>
-                <input type="text" class="form-control" id="addProjectname" placeholder="{{projectbyId.Name}}"
-                       ng-model="addProject.Name" >
+                <input type="text"
+                       class="form-control"
+                       id="addProjectname"
+                       ng-model="projectbyId.Name"
+                       ng-value= projectbyId.Name>
 
                 <label for="addProjectDescription">Description</label>
-                <textarea row="5" class="form-control" id="addProjectDescription"
-                          placeholder="{{projectbyId.Description}}" ng-model="addProject.Description">
+                <textarea row="5"
+                          class="form-control"
+                          id="addProjectDescription"
+                          ng-model= projectbyId.Description>
                 </textarea>
 
                 <label for="addProjectKey">ProjectKey</label>
-                <input type="text" class="form-control" id="addProjectKey" disabled
-                       ng-model="addProject.ProjectKey" placeholder="{{projectbyId.ProjectKey}}">
+                <input type="text"
+                       class="form-control"
+                       id="addProjectKey" disabled
+                       ng-model="projectbyId.ProjectKey"
+                       placeholder="{{projectbyId.ProjectKey}}">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
-                <select name="priorities" id="addProjectPriorities" ng-model="addProject.prioritiesAsArray" multiple>
+                <select name="priorities"
+                        id="addProjectPriorities"
+                        ng-model="projectbyId.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
@@ -30,9 +40,9 @@
                 <div form-directive></div>
 
                 <br/>
-                <button type="submit" class="btn btn-primary pull-right"
+                <button ng-controller="ProjectsCtrl" type="submit" class="btn btn-primary pull-right"
                         ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
-                        ng-click="editProject(addProject)">Edit project
+                        ng-click="editProject(projectbyId)">Edit project
                 </button>
             </div>
         </form>

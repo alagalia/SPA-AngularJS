@@ -6,18 +6,30 @@
             <div class="form-group">
 
                 <label for="addProjectname">Name</label>
-                <input type="text" class="form-control" id="addProjectname" placeholder="Name"
-                       ng-model="addProject.Name">
+                <input type="text"
+                       class="form-control"
+                       id="addProjectname"
+                       placeholder="Name"
+                       ng-model="projectbyId.Name">
+
                 <label for="addProjectDescription">Description</label>
-                <textarea row="5" class="form-control" id="addProjectDescription"
-                          placeholder="Description" ng-model="addProject.Description">
+                <textarea row="5"
+                          class="form-control"
+                          id="addProjectDescription"
+                          placeholder="Description"
+                          ng-model="projectbyId.Description">
                 </textarea>
+
                 <label for="addProjectKey">ProjectKey</label>
-                <input type="text" class="form-control" id="addProjectKey"
-                       ng-model="addProject.ProjectKey" value="">
+                <input type="text"
+                       class="form-control"
+                       id="addProjectKey"
+                       ng-model="projectbyId.ProjectKey">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
-                <select name="priorities" id="addProjectPriorities" ng-model="addProject.prioritiesAsArray" multiple>
+                <select name="priorities"
+                        id="addProjectPriorities"
+                        ng-model="projectbyId.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
@@ -30,7 +42,7 @@
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"
                         ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
-                        ng-click="addProject(addProject)">Add project
+                        ng-click="addProject(projectbyId)">Add project
                 </button>
             </div>
         </form>
