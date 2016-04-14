@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-1 border">
+
+        <form name="addProjectForm">
+
+            <div class="form-group">
+
+                <label for="addProjectname">Name</label>
+                <input type="text" class="form-control" id="addProjectname" placeholder="{{projectbyId.Name}}"
+                       ng-model="addProject.Name" >
+
+                <label for="addProjectDescription">Description</label>
+                <textarea row="5" class="form-control" id="addProjectDescription"
+                          placeholder="{{projectbyId.Description}}" ng-model="addProject.Description">
+                </textarea>
+
+                <label for="addProjectKey">ProjectKey</label>
+                <input type="text" class="form-control" id="addProjectKey" disabled
+                       ng-model="addProject.ProjectKey" placeholder="{{projectbyId.ProjectKey}}">
+
+                <label for="addProjectPriorities"> Priorities multiple select: </label><br>
+                <select name="priorities" id="addProjectPriorities" ng-model="addProject.prioritiesAsArray" multiple>
+                    <option value="Low">Low</option>
+                    <option value="Normal">Normal</option>
+                    <option value="High">High</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+
+                <!--Custom directive for form footer -->
+                <div form-directive></div>
+
+                <br/>
+                <button type="submit" class="btn btn-primary pull-right"
+                        ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
+                        ng-click="editProject(addProject)">Edit project
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
