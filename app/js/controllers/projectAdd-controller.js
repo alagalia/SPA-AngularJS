@@ -17,17 +17,7 @@ trackerApp
         'projectsService',
         'notifyService',
         'userService',
-        function ($scope, $location, projectsService, notifyService, userService, UserCtrl) {
-
-            $scope.data = [
-                {text: "<< ==== Put text to Search ===== >>"}
-            ];
-
-
-            $scope.priorities = {
-                multipleSelect: []
-            };
-
+        function ($scope, $location, projectsService, notifyService, userService) {
 
             $scope.addProject = function (project) {
                 var labels = project.labelsArray;
@@ -54,31 +44,5 @@ trackerApp
                         notifyService.showError("'Add project' failed", err.statusText);
                     });
             };
-
-            userService.getAllUsers()
-                .then(function (allUsers) {
-                        $scope.allUsers = allUsers;
-                    }, function (err) {
-                        notifyService.showError("Request failed", err.statusText);
-                    }
-                );
-
-            //todo autocomplete
-            projectsService.getAllExistingLabels()
-                .then(function (allLabels) {
-                        $scope.allLabels = allLabels;
-                    }, function (err) {
-                        notifyService.showError("Request failed", err.statusText);
-                    }
-                );
-            $scope.hide = true;
-            $scope.showLabels = function(text){
-                $scope.hide = false;
-            };
-            $scope.checkTextLenght = function(text){
-                if(text.length==0){
-                    $scope.hide = true;
-                };
-            }
         }
     ]);

@@ -10,11 +10,10 @@ trackerApp
         'notifyService',
         function ($scope, $location, $routeParams, projectsService, issuesService, notifyService) {
 
-
-
-            function getProjectById(id) {
+            var getProjectById = function getProjectById(id) {
                 projectsService.getProjectById(id)
                     .then(function (project) {
+
                             $scope.projectbyId = project.data;
                             $scope.isLeader = sessionStorage.userName === project.data.Lead.Username;
                     }, function (err) {
@@ -28,13 +27,12 @@ trackerApp
                     }, function (err) {
                         notifyService.showError("Request 'Get issues' failed", err.statusText);
                     })
-            }
+            };
 
             if (isNaN($routeParams.id)) {
                 $location.path('/projects');
             } else {
                 getProjectById($routeParams.id)
-
             }
 
         }

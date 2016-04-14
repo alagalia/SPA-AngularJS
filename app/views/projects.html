@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
 
-             <h1>Projects</h1>
+            <h1>Projects</h1>
 
             <!--GET CURRENT USER-->
             <div>
@@ -11,7 +11,9 @@
                 <p>{{currentUser.Username}} </p>
                 <p>{{currentUser.isAdmin}}</p>
             </div>
-            <a href="#/add"><button class="btn-default">Add new project</button></a>
+            <a href="#/add">
+                <button class="btn-default">Add new project</button>
+            </a>
         </div>
 
         <div class="jumbotron col-md-12">
@@ -22,9 +24,10 @@
                     <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
                     <td>{{ project.Lead.Username }}</td>
                     <td>{{ project.Description }}</td>
-                    <td><a href="#/projects/{{project.Id}}">
-                        <button class="btn-sm">view</button>
-                    </a>
+                    <td>
+                        <a href="#/projects/{{project.Id}}">
+                            <button class="btn-sm">view</button>
+                        </a>
                     </td>
                 </tr>
                 </tbody>

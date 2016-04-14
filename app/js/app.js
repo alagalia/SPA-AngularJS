@@ -31,5 +31,9 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/add-project.html',
             controller: 'ProjectAddCtrl'
         })
+        .when('/projects/:id/edit', {
+            templateUrl: 'views/edit-project.html',
+            controller: 'ProjectDetailCtrl'
+        })
         .otherwise({redirectTo: '/'});
 }]);

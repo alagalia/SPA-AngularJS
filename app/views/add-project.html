@@ -24,22 +24,8 @@
                     <option value="Urgent">Urgent</option>
                 </select>
 
-                <br/>
-                <label for="addLabel"> Label </label><br>
-                <input type="text" id="addLabel" placeholder="Search" ng-model="search.text" ng-keydown="showLabels(search.text)" ng-keyup="checkTextLenght(search.text)">
-                <div class="autocomplete" >
-                    <div ng-hide="hide">
-                        <p ng-repeat="label in allLabels | filter:search.text"
-                            ng-bind-html="label.Name | highlight:search.text">
-                        </p>
-                    </div>
-                </div>
-
-                <br/>
-                <label for="addLeadId"> Lead of project: </label><br>
-                <select ng-model="addProject.LeadId" id="addLeadId">
-                    <option ng-repeat="user in allUsers" value="{{user.Id}}">{{user.Username}}</option>
-                </select>
+                <!--Custom directive for add and edit form footer -->
+                <div form-directive></div>
 
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"
