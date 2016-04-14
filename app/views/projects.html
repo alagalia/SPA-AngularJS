@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row">
-            <h1>Projects</h1>
+
+             <h1>Projects</h1>
 
             <!--GET CURRENT USER-->
             <div>
@@ -31,17 +32,17 @@
         </div>
 
         <!--GET ALL USERS-->
-        <!--<div class="jumbotron col-md-12">-->
-            <!--<table>-->
-                <!--<tbody>-->
-                <!--<tr ng-repeat="user in allUsers">-->
-                    <!--<td>{{ $index + 1 }}</td>-->
-                    <!--<td>{{user.Username}}</td>-->
-                    <!--<td>{{user.isAdmin}}</td>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-            <!--</table>-->
-        <!--</div>-->
+        <div class="jumbotron col-md-12">
+            <table>
+                <tbody>
+                <tr ng-repeat="user in allUsers">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{user.Username}}</td>
+                    <td>{{user.isAdmin}}</td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

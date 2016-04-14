@@ -8,14 +8,14 @@ trackerApp
         'userService',
         function ($scope, projectsService, notifyService, userService) {
 
-            userService.getCurrentUser()
-                .then(function (currentUser) {
-                        $scope.currentUser = currentUser;
-                    }, function (err) {
-                        var serverError = err.data.error_description;
-                        notifyService.showError("Request failed", serverError);
-                    }
-                );
+            //userService.getCurrentUser()
+            //    .then(function (currentUser) {
+            //            $scope.currentUser = currentUser;
+            //        }, function (err) {
+            //            var serverError = err.data.error_description;
+            //            notifyService.showError("Request failed", serverError);
+            //        }
+            //    );
 
             var getAllUsers = userService.getAllUsers()
                 .then(function (allUsers) {

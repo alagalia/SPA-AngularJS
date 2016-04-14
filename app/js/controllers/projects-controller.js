@@ -1,6 +1,7 @@
 'use strict';
 
 trackerApp
+
     .controller('ProjectsCtrl', [
         '$scope',
         'projectsService',
@@ -18,6 +19,13 @@ trackerApp
                     }
                 );
 
-
+            var getAllUsers = userService.getAllUsers()
+                .then(function (allUsers) {
+                        $scope.allUsers = allUsers;
+                    }, function (err) {
+                        var serverError = err.data.error_description;
+                        notifyService.showError("Request failed", serverError);
+                    }
+                );
         }
     ]);

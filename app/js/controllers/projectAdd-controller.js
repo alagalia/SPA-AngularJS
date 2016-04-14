@@ -1,6 +1,16 @@
 'use strict';
 
 trackerApp
+    .filter('highlight', function ($sce) {
+        return function (text, phrase) {
+            if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
+                '<span class="highlighted">$1</span>')
+
+            return $sce.trustAsHtml(text)
+        }
+    })
+
+
     .controller('ProjectAddCtrl', [
         '$scope',
         '$location',
@@ -8,6 +18,11 @@ trackerApp
         'notifyService',
         'userService',
         function ($scope, $location, projectsService, notifyService, userService, UserCtrl) {
+
+            $scope.data = [
+                {text: "<< ==== Put text to Search ===== >>"}
+            ];
+
 
             $scope.priorities = {
                 multipleSelect: []
@@ -48,16 +63,22 @@ trackerApp
                     }
                 );
 
-
+            //todo autocomplete
             projectsService.getAllExistingLabels()
                 .then(function (allLabels) {
                         $scope.allLabels = allLabels;
-                        console.log(allLabels)
                     }, function (err) {
                         notifyService.showError("Request failed", err.statusText);
                     }
                 );
-
-
+            $scope.hide = true;
+            $scope.showLabels = function(text){
+                $scope.hide = false;
+            };
+            $scope.checkTextLenght = function(text){
+                if(text.length==0){
+                    $scope.hide = true;
+                };
+            }
         }
     ]);
