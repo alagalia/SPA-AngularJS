@@ -1,16 +1,6 @@
 'use strict';
 
 trackerApp
-    .filter('highlight', function ($sce) {
-        return function (text, phrase) {
-            if (phrase) text = text.replace(new RegExp('(' + phrase + ')', 'gi'),
-                '<span class="highlighted">$1</span>');
-
-            return $sce.trustAsHtml(text)
-        }
-    })
-
-
     .controller('CommonCtrl', [
         '$scope',
         '$location',
@@ -42,7 +32,7 @@ trackerApp
                     }
                 );
             $scope.hide = true;
-            $scope.showLabels = function(text){
+            $scope.showLabels = function(){
                 $scope.hide = false;
             };
             $scope.checkTextLenght = function(text){
