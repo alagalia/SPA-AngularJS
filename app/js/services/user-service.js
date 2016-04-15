@@ -59,7 +59,6 @@ trackerApp
                 };
                 $http(request)
                     .then(function (response) {
-                        console.log(response.data);
                         deferred.resolve(response.data)
                     }, function (err) {
                         deferred.reject(err)
@@ -67,10 +66,34 @@ trackerApp
                 return deferred.promise;
             }
 
+            //todo changePassword
+
+            function changePassword(user) {
+
+                var deferred = $q.defer();
+                var request = {
+                    method: 'POST',
+                    url: BASE_URL + 'api/Account/ChangePassword',
+                    data : user,
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+                $http(request)
+                    .then(function (response) {
+                        deferred.resolve(response.data)
+                    }, function (err) {
+                        deferred.reject(err)
+                    });
+                return deferred.promise;
+            }
+
+
             return {
                 getCurrentUser: getCurrentUser,
                 getAllUsers: getAllUsers,
-                makeAdmin: makeAdmin
+                makeAdmin: makeAdmin,
+                changePassword : changePassword
             }
         }
     ]);
