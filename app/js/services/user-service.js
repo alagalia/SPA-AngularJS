@@ -5,7 +5,6 @@ trackerApp
         'BASE_URL',
         function ($http, $q, BASE_URL) {
 
-            //todo
             function getCurrentUser() {
 
                 var deferred = $q.defer();
@@ -65,8 +64,6 @@ trackerApp
                     });
                 return deferred.promise;
             }
-
-            //todo changePassword
 
             function changePassword(user) {
 
