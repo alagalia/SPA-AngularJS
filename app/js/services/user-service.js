@@ -85,12 +85,32 @@ trackerApp
                 return deferred.promise;
             }
 
+            function logOut() {
+
+                var deferred = $q.defer();
+                var request = {
+                    method: 'POST',
+                    url: BASE_URL + 'api/Account/Logout',
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+                $http(request)
+                    .then(function (response) {
+                        deferred.resolve(response.data)
+                    }, function (err) {
+                        deferred.reject(err)
+                    });
+                return deferred.promise;
+            }
+
 
             return {
                 getCurrentUser: getCurrentUser,
                 getAllUsers: getAllUsers,
                 makeAdmin: makeAdmin,
-                changePassword : changePassword
+                changePassword : changePassword,
+                logOut : logOut
             }
         }
     ]);

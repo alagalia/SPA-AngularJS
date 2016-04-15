@@ -38,5 +38,9 @@ var trackerApp = angular.module('trackerApp', [
         .when('/profile/password', {
             templateUrl: 'views/user-profile.html'
         })
+        .when('/logout', {
+            templateUrl: 'views/logOut.html',
+            controller: 'UserCtrl'
+        })
         .otherwise({redirectTo: '/'});
 }]);

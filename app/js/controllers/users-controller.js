@@ -3,33 +3,25 @@
 trackerApp
     .controller('UserCtrl', [
         '$scope',
+        '$location',
         'projectsService',
         'notifyService',
         'userService',
-        function ($scope, projectsService, notifyService, userService) {
-
-           //var getAllUsers = userService.getAllUsers()
-           //     .then(function (allUsers) {
-           //             $scope.allUsers = allUsers;
-           //         }, function (err) {
-           //             var serverError = err.data.error_description;
-           //             notifyService.showError("Request failed", serverError);
-           //         }
-           //     );
+        function ($scope, $location,projectsService, notifyService, userService) {
 
             var id = sessionStorage['Id'];
 
-           $scope.makeAdmin = function makeAdmin(id) {
-               userService.makeAdmin(id)
-                   .then(function (data) {
-                           notifyService.showInfo("User was made as admin!", data);
-                       }, function (err) {
-                           notifyService.showError("Request failed", err);
-                       }
-                   );
-           };
+            $scope.makeAdmin = function makeAdmin(id) {
+                userService.makeAdmin(id)
+                    .then(function (data) {
+                            notifyService.showInfo("User was made as admin!", data);
+                        }, function (err) {
+                            notifyService.showError("Request failed", err);
+                        }
+                    );
+            };
 
-            $scope.changePassword = function changePassword (user) {
+            $scope.changePassword = function changePassword(user) {
                 userService.changePassword(user)
                     .then(function (data) {
                             notifyService.showInfo("Password is changed!", data);
@@ -37,6 +29,20 @@ trackerApp
                             notifyService.showError("Password is not changed!", err);
                         }
                     );
+            };
+
+            $scope.logOut = function logOut() {
+                userService.logOut()
+                    .then(function (data) {
+                            sessionStorage.clear();
+                            notifyService.showInfo("Logout successful!", data);
+                            $location.path('/');
+                        }, function (err) {
+                            notifyService.showError("Request reject!", err);
+                        }
+                    );
             }
+
+
         }
     ]);

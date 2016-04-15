@@ -53,7 +53,6 @@ trackerApp
                 return deferred.promise;
             }
 
-
             return {
                 loginUser: loginUser,
                 registerUser: registerUser
