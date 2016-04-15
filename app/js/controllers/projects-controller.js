@@ -10,12 +10,6 @@ trackerApp
         'userService',
         function ($scope, $location, projectsService, notifyService, userService) {
 
-            $scope.currentUser = {
-                Username: sessionStorage.userName,
-                Id :  sessionStorage.userId,
-                isAdmin :  sessionStorage.isAdmin
-            };
-
             var convertData = function (project){
                 project.labels = toObject(project.labels);
                 project.priorities = toObject(project.priorities);
@@ -47,7 +41,7 @@ trackerApp
                 project = convertData(project);
                 projectsService.editProject(project)
                     .then(function () {
-                        notifyService.showInfo("Project added successful");
+                        notifyService.showInfo("Project edited successful");
                         $location.path('/projects');
                     }, function (err) {
                         notifyService.showError("'Edit project' failed", err.statusText);
@@ -57,6 +51,7 @@ trackerApp
             projectsService.getAllProjects()
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data;
+                    console.log(allProjects.data)
 
                     }, function (err) {
                         var serverError = err.data.error_description;

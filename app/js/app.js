@@ -35,5 +35,9 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/edit-project.html',
             controller: 'ProjectDetailCtrl'
         })
+        .when('/userProfile', {
+            templateUrl: 'views/user-profile.html'
+            //todo add controller for change pass info
+        })
         .otherwise({redirectTo: '/'});
 }]);

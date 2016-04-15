@@ -4,13 +4,9 @@
 
             <h1>Projects</h1>
 
-            <!--GET CURRENT USER-->
-            <div>
-                <h4>Current user:</h4>
-                <p>Name : {{currentUser.Username}} </p>
-                <p>ID: {{currentUser.Id}}</p>
-                <p>Status: {{currentUser.isAdmin | admin}}</p>
-            </div>
+            <!--User Profile directive-->
+            <div profile-Directive></div>
+
             <a href="#/add">
                 <button class="btn-default">Add new project</button>
             </a>

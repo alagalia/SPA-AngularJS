@@ -15,13 +15,13 @@
 
 <br/>
 <label for="addLabel"> Label </label><br>
-<input name="namesInput" ng-model="projectbyId.labels" ng-list id="addLabel">
+<input ng-model="projectbyId.labels" required="required" name="namesInput"  ng-list id="addLabel">
 
 
 
 
 <br/>
 <label for="addLeadId"> Lead of project: </label><br>
-<select ng-model="projectbyId.LeadId" id="addLeadId">
-    <option ng-repeat="user in allUsers" value="{{user.Id}}">{{user.Username}}</option>
+<select ng-model="projectbyId.LeadId" required="required" id="addLeadId">
+    <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
 </select>

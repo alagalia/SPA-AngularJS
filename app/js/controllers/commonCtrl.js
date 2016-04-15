@@ -19,6 +19,12 @@ trackerApp
         'userService',
         function ($scope, $location, projectsService, notifyService, userService) {
 
+            $scope.currentUser = {
+                Username: sessionStorage.userName,
+                Id :  sessionStorage.userId,
+                isAdmin :  sessionStorage.isAdmin
+            };
+
             userService.getAllUsers()
                 .then(function (allUsers) {
                         $scope.allUsers = allUsers;

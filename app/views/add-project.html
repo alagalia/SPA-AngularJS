@@ -10,6 +10,7 @@
                        class="form-control"
                        id="addProjectname"
                        placeholder="Name"
+                       required="required"
                        ng-model="projectbyId.Name">
 
                 <label for="addProjectDescription">Description</label>
@@ -17,6 +18,7 @@
                           class="form-control"
                           id="addProjectDescription"
                           placeholder="Description"
+                          required="required"
                           ng-model="projectbyId.Description">
                 </textarea>
 
@@ -29,6 +31,7 @@
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities"
                         id="addProjectPriorities"
+                        required="required"
                         ng-model="projectbyId.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
