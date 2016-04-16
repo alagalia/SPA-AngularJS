@@ -20,14 +20,13 @@ trackerApp
                         outputArrayAsJson.push({'Name': inputArray[i]});
                     return outputArrayAsJson;
                 }
-
                 return project
             };
 
-            $scope.addProject = function (project) {
+            $scope.addProject = function (object) {
                 //todo project. ProjectKey from first letters
-                project = convertData(project);
-                projectsService.addProject(project)
+                object = convertData(project);
+                projectsService.addProject(object)
                     .then(function () {
                         notifyService.showInfo("Project added successful");
                         $location.path('/projects');
@@ -36,10 +35,10 @@ trackerApp
                     });
             };
 
-            $scope.editProject = function (project) {
+            $scope.editProject = function (object) {
                 //todo project. ProjectKey from first letters
-                project = convertData(project);
-                projectsService.editProject(project)
+                object = convertData(project);
+                projectsService.editProject(object)
                     .then(function () {
                         notifyService.showInfo("Project edited successful");
                         $location.path('/projects');
@@ -51,8 +50,6 @@ trackerApp
             projectsService.getAllProjects()
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data;
-                    console.log(allProjects.data)
-
                     }, function (err) {
                         var serverError = err.data.error_description;
                         notifyService.showError("Request failed", serverError);

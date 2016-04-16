@@ -8,6 +8,9 @@ var trackerApp = angular.module('trackerApp', [
         '$routeProvider',
         function ($routeProvider) {
     $routeProvider
+        .when('/', {
+            templateUrl: 'views/wellcome.html'
+        })
         .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'HomeCtrl'
@@ -16,20 +19,17 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/register.html',
             controller: 'HomeCtrl'
         })
-        .when('/', {
-            templateUrl: 'views/wellcome.html'
-        })
         .when('/projects', {
             templateUrl: 'views/projects.html',
+            controller: 'ProjectsCtrl'
+        })
+        .when('/add', {
+            templateUrl: 'views/add-project.html',
             controller: 'ProjectsCtrl'
         })
         .when('/projects/:id', {
             templateUrl: 'views/project-details.html',
             controller: 'ProjectDetailCtrl'
-        })
-        .when('/add', {
-            templateUrl: 'views/add-project.html',
-            controller: 'ProjectsCtrl'
         })
         .when('/projects/:id/edit', {
             templateUrl: 'views/edit-project.html',
@@ -41,6 +41,10 @@ var trackerApp = angular.module('trackerApp', [
         .when('/logout', {
             templateUrl: 'views/logOut.html',
             controller: 'UserCtrl'
+        })
+        .when('/projects/:id/add-issue', {
+            templateUrl: 'views/add-issue.html',
+            controller: 'IssuesCtrl'
         })
         .otherwise({redirectTo: '/'});
 }]);

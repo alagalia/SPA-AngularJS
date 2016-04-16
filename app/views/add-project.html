@@ -11,7 +11,7 @@
                        id="addProjectname"
                        placeholder="Name"
                        required="required"
-                       ng-model="projectbyId.Name">
+                       ng-model="object.Name">
 
                 <label for="addProjectDescription">Description</label>
                 <textarea row="5"
@@ -19,20 +19,20 @@
                           id="addProjectDescription"
                           placeholder="Description"
                           required="required"
-                          ng-model="projectbyId.Description">
+                          ng-model="object.Description">
                 </textarea>
 
                 <label for="addProjectKey">ProjectKey</label>
                 <input type="text"
                        class="form-control"
                        id="addProjectKey"
-                       ng-model="projectbyId.ProjectKey">
+                       ng-model="object.ProjectKey">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities"
                         id="addProjectPriorities"
                         required="required"
-                        ng-model="projectbyId.priorities" multiple>
+                        ng-model="object.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
@@ -40,12 +40,13 @@
                 </select>
 
                 <!--Custom directive for add and edit form footer -->
+                <label for="addId"> Lead of project: </label><br>
                 <div form-directive></div>
 
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"
-                        ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
-                        ng-click="addProject(projectbyId)">Add project
+                        ng-disabled="addProjectForm.$invalid"
+                        ng-click="addProject(object)">Add project
                 </button>
             </div>
         </form>

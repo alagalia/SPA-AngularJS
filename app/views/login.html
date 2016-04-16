@@ -7,7 +7,7 @@
                 <input type="text" required=required class="form-control" id="loginUserEmail" placeholder="Email" ng-model="loginUser.userEmail">
 
                 <label for="loginPassword">Password</label>
-                <input type="password" required=required min-length="6" max-length="100" class="form-control" id="loginPassword" placeholder="Passowrd" ng-model="loginUser.password">
+                <input type="password" required=required min-length="6" max-length="100" class="form-control" id="loginPassword" placeholder="Password" ng-model="loginUser.password">
             </div>
             <br />
             <button type="submit" class="btn btn-primary pull-right" ng-disabled="loginUserForm.$invalid" ng-click="login(loginUser)">Login</button>

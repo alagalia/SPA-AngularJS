@@ -6,6 +6,7 @@
             <p>Project key: {{projectbyId.ProjectKey}}</p>
             <p>Project name: {{projectbyId.Name}}</p>
             <a href="#/projects/{{projectbyId.Id}}/edit" ng-if="isLeader"><button class="btn-default">EDIT PROJECT</button></a>
+            <a href="#/projects/{{projectbyId.Id}}/add-issue" ng-if="isLeader"><button class="btn-default">ADD ISSUE</button></a>
         </div>
         <div class="jumbotron col-md-9">
             <table>

@@ -1,0 +1,3 @@
+<select ng-model="object.PriorityId" required="required" id="addId">
+    <option ng-repeat="priority in priorities | orderBy:'Name'" value="{{priority.Id}}">{{priority.Name}}</option>
+</select>

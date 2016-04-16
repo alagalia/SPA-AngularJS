@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-1 border">
 
-        <form name="addProjectForm">
+        <form name="editProjectForm">
 
             <div class="form-group">
 
@@ -9,27 +9,27 @@
                 <input type="text"
                        class="form-control"
                        id="addProjectname"
-                       ng-model="projectbyId.Name"
-                       ng-value= projectbyId.Name>
+                       ng-model="object.Name"
+                       ng-value= object.Name>
 
                 <label for="addProjectDescription">Description</label>
                 <textarea row="5"
                           class="form-control"
                           id="addProjectDescription"
-                          ng-model= projectbyId.Description>
+                          ng-model= object.Description>
                 </textarea>
 
                 <label for="addProjectKey">ProjectKey</label>
                 <input type="text"
                        class="form-control"
                        id="addProjectKey" disabled
-                       ng-model="projectbyId.ProjectKey"
-                       placeholder="{{projectbyId.ProjectKey}}">
+                       ng-model="object.ProjectKey"
+                       placeholder="{{object.ProjectKey}}">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities"
                         id="addProjectPriorities"
-                        ng-model="projectbyId.priorities" multiple>
+                        ng-model="object.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
@@ -41,8 +41,8 @@
 
                 <br/>
                 <button ng-controller="ProjectsCtrl" type="submit" class="btn btn-primary pull-right"
-                        ng-disabled="addProjectForm.$invalid || registerUser.password!=registerUser.confirmPassword"
-                        ng-click="editProject(projectbyId)">Edit project
+                        ng-disabled="addProjectname.$invalid"
+                        ng-click="editProject(object)">Edit project
                 </button>
             </div>
         </form>
