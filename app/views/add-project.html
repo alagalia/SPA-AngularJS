@@ -11,7 +11,7 @@
                        id="addProjectname"
                        placeholder="Name"
                        required="required"
-                       ng-model="object.Name">
+                       ng-model="project.Name">
 
                 <label for="addProjectDescription">Description</label>
                 <textarea row="5"
@@ -19,34 +19,40 @@
                           id="addProjectDescription"
                           placeholder="Description"
                           required="required"
-                          ng-model="object.Description">
+                          ng-model="project.Description">
                 </textarea>
 
                 <label for="addProjectKey">ProjectKey</label>
                 <input type="text"
                        class="form-control"
                        id="addProjectKey"
-                       ng-model="object.ProjectKey">
+                       required="required"
+                       ng-model="project.ProjectKey">
 
                 <label for="addProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities"
                         id="addProjectPriorities"
                         required="required"
-                        ng-model="object.priorities" multiple>
+                        ng-model="project.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
                     <option value="Urgent">Urgent</option>
                 </select>
 
-                <!--Custom directive for add and edit form footer -->
                 <label for="addId"> Lead of project: </label><br>
-                <div form-directive></div>
+                <select ng-model="project.LeadId" required="required" id="addId">
+                    <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
+                </select>
+
+                <br/>
+                <label for="addLabel"> Label </label><br>
+                <input ng-model="project.labels" required="required" name="namesInput"  ng-list id="addLabel">
 
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"
                         ng-disabled="addProjectForm.$invalid"
-                        ng-click="addProject(object)">Add project
+                        ng-click="addProject(project)">Add project
                 </button>
             </div>
         </form>

@@ -45,10 +45,51 @@ trackerApp
                         return deferred.promise;
                 }
 
+                function editIssue(issue){
+                        var deferred = $q.defer();
+                        var request = {
+                                method: 'PUT',
+                                url: BASE_URL + 'issues/' + issue.Id,
+                                headers: {
+                                        Authorization: "Bearer "+sessionStorage["token"]
+                                },
+                                data : issue
+                        };
+
+                        $http(request)
+                            .then(function(response){
+                                    deferred.resolve(response);
+                            },function(err){
+                                    deferred.reject(err);
+                            });
+                        return deferred.promise;
+                }
+
+
+                function getIssueById(id){
+                        var deferred = $q.defer();
+                        var request = {
+                                method: 'GET',
+                                url: BASE_URL + 'issues/'+id,
+                                headers: {
+                                        Authorization: "Bearer "+sessionStorage["token"]
+                                }
+                        };
+
+                        $http(request)
+                            .then(function(response){
+                                    deferred.resolve(response);
+                            },function(err){
+                                    deferred.reject(err);
+                            });
+                        return deferred.promise;
+                }
+
 
                 return {
                         getIssuesByProjectId: getIssuesByProjectId,
-                        addIssue : addIssue
+                        addIssue : addIssue,
+                        getIssueById : getIssueById
                 }
         }
     ]);

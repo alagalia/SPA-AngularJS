@@ -5,7 +5,8 @@ trackerApp.controller('IssuesCtrl',[
     'issuesService',
     'notifyService',
     function($scope, $routeParams, $location, issuesService, notifyService){
-        //todo
+
+
 
         var convertLabels = function toObject(inputArray) {
                 var outputArrayAsJson = [];
@@ -19,13 +20,25 @@ trackerApp.controller('IssuesCtrl',[
             issue.AssigneeId = issue.LeadId;
             issue.labels = convertLabels(issue.labels);
             issuesService.addIssue(issue)
-                .then(function success(response){
+                .then(function success(){
                     notifyService.showInfo("Issue successful added!");
-                    console.log(response);
                     $location.path('/projects/issue.ProjectId');
                 }, function error(err){
                     notifyService.showError("Add failed!", err.statusText);
                 })
-        }
+        };
+
+        $scope.editIssue = function editIssue (issue){
+            issue.ProjectId = $routeParams.id;
+            issue.AssigneeId = issue.LeadId;
+            issue.labels = convertLabels(issue.labels);
+            issuesService.editIssue(issue)
+                .then(function success(){
+                    notifyService.showInfo("Issue successful added!");
+                    $location.path('/');
+                }, function error(err){
+                    notifyService.showError("Edit issue failed!", err.statusText);
+                })
+        };
     }
 ]);

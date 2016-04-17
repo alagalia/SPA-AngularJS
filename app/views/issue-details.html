@@ -1,0 +1,23 @@
+<div class="jumbotron col-md-9">
+    <table>
+        <thead>
+        <th>№</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>DueDate</th>
+        <th>Assignee</th>
+        <th>Status</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="issue in issuesById">
+            <td>{{ $index + 1 }}</td>
+            <td>{{ issue.Title}}</td>
+            <td>{{ issue.Description }}</td>
+            <td>{{ issue.DueDate}}</td>
+            <td>{{ issue.Assignee.Username }}</td>
+            <td>{{ issue.Status.Name }}</td>
+            <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -21,11 +21,11 @@ var trackerApp = angular.module('trackerApp', [
         })
         .when('/projects', {
             templateUrl: 'views/projects.html',
-            controller: 'ProjectsCtrl'
+            controller: 'DashboardCtrl'
         })
         .when('/add', {
             templateUrl: 'views/add-project.html',
-            controller: 'ProjectsCtrl'
+            controller: 'DashboardCtrl'
         })
         .when('/projects/:id', {
             templateUrl: 'views/project-details.html',
@@ -45,6 +45,10 @@ var trackerApp = angular.module('trackerApp', [
         .when('/projects/:id/add-issue', {
             templateUrl: 'views/add-issue.html',
             controller: 'IssuesCtrl'
+        })
+        .when('/issues/:id', {
+            templateUrl: 'views/issue-details.html',
+            controller: 'IssueDetailCtrl'
         })
         .otherwise({redirectTo: '/'});
 }]);

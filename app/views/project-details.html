@@ -5,8 +5,9 @@
             <p>Project Id: {{projectbyId.Id}}</p>
             <p>Project key: {{projectbyId.ProjectKey}}</p>
             <p>Project name: {{projectbyId.Name}}</p>
-            <a href="#/projects/{{projectbyId.Id}}/edit" ng-if="isLeader"><button class="btn-default">EDIT PROJECT</button></a>
-            <a href="#/projects/{{projectbyId.Id}}/add-issue" ng-if="isLeader"><button class="btn-default">ADD ISSUE</button></a>
+            <p>Project description: {{projectbyId.Description}}</p>
+            <a href="#/projects/{{project.Id}}/edit" ng-if="isLeader"><button class="btn-default">EDIT PROJECT</button></a>
+            <a href="#/projects/{{project.Id}}/add-issue" ng-if="isLeader"><button class="btn-default">ADD ISSUE</button></a>
         </div>
         <div class="jumbotron col-md-9">
             <table>
@@ -26,6 +27,7 @@
                     <td>{{ issue.DueDate}}</td>
                     <td>{{ issue.Assignee.Username }}</td>
                     <td>{{ issue.Status.Name }}</td>
+                    <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
                 </tr>
                 </tbody>
             </table>

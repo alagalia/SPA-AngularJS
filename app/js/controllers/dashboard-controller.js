@@ -2,7 +2,7 @@
 
 trackerApp
 
-    .controller('ProjectsCtrl', [
+    .controller('DashboardCtrl', [
         '$scope',
         '$location',
         'projectsService',
@@ -35,17 +35,7 @@ trackerApp
                     });
             };
 
-            $scope.editProject = function (object) {
-                //todo project. ProjectKey from first letters
-                object = convertData(project);
-                projectsService.editProject(object)
-                    .then(function () {
-                        notifyService.showInfo("Project edited successful");
-                        $location.path('/projects');
-                    }, function (err) {
-                        notifyService.showError("'Edit project' failed", err.statusText);
-                    });
-            };
+
 
             projectsService.getAllProjects()
                 .then(function (allProjects) {

@@ -12,12 +12,12 @@ trackerApp
 
             var getProjectById = function getProjectById(id) {
                 projectsService.getProjectById(id)
-                    .then(function (project) {
-                            $scope.projectbyId = project.data;
-                            console.log(project.data);
-                        $scope.priorities = project.data.Priorities;
-                            $scope.isLeader = sessionStorage.userName === project.data.Lead.Username;
-                    }, function (err) {
+                    .then(function (response) {
+                            $scope.project = response.data;
+                            console.log(response.data);
+                            $scope.priorities = response.data.Priorities;
+                            $scope.isLeader = sessionStorage.userName === response.data.Lead.Username;
+                        }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
                         }
                     );
@@ -25,10 +25,34 @@ trackerApp
                 issuesService.getIssuesByProjectId(id)
                     .then(function (issuesById) {
                         $scope.issuesById = issuesById.data;
-                        console.log(issuesById)
                     }, function (err) {
                         notifyService.showError("Request 'Get issues' failed", err.statusText);
                     })
+            };
+
+            var convertData = function (project){
+                project.labels = toObject(project.labels);
+                project.priorities = toObject(project.priorities);
+
+                function toObject(inputArray) {
+                    var outputArrayAsJson = [];
+                    for (var i = 0; i < inputArray.length; ++i)
+                        outputArrayAsJson.push({'Name': inputArray[i]});
+                    return outputArrayAsJson;
+                }
+                return project
+            };
+
+            $scope.editProject = function (object) {
+                //todo project. ProjectKey from first letters
+                object = convertData(object);
+                projectsService.editProject(object)
+                    .then(function () {
+                        notifyService.showInfo("Project edited successful");
+                        $location.path('/projects');
+                    }, function (err) {
+                        notifyService.showError("'Edit project' failed", err.statusText);
+                    });
             };
 
             if (isNaN($routeParams.id)) {
