@@ -10,6 +10,12 @@ trackerApp
         function ($scope, $location,projectsService, notifyService, userService) {
 
             var id = sessionStorage['Id'];
+            $scope.showForm = false;
+
+            $scope.show = function show(){
+                $scope.showForm = !$scope.showForm;
+            };
+
 
             $scope.makeAdmin = function makeAdmin(id) {
                 userService.makeAdmin(id)

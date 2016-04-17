@@ -16,7 +16,7 @@ trackerApp
                             $scope.project = response.data;
                             console.log(response.data);
                             $scope.priorities = response.data.Priorities;
-                            $scope.isLeader = sessionStorage.userName === response.data.Lead.Username;
+                            $scope.isLeader = sessionStorage.userName === response.data.Lead.Username || sessionStorage['isAdmin'];
                         }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
                         }

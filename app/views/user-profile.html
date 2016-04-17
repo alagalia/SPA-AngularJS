@@ -1,11 +1,12 @@
 <div profile-Directive></div>
 
 <div ng-controller="UserCtrl">
-    <button class="btn-group-lg">Change password</button>
+    <h4>Want to change password: </h4>
+    <button class="btn-group-lg" ng-click="show()">Change password</button>
 
-    <div class="row">
+    <div class="row" ng-show="showForm">
         <div class="col-md-4 col-md-offset-1 border">
-            <form name="changePassowrdForm">
+            <form name="changePasswordForm">
                 <div class="form-group">
 
                     <label for="oldPassword">Old password</label>
@@ -33,7 +34,7 @@
                            ng-model="user.ConfirmPassword">
                     <br />
                     <button type="submit" class="btn btn-primary pull-right"
-                            ng-disabled="changePassowrdForm.$invalid || user.newPassword!=user.confirmPassword"
+                            ng-disabled="changePasswordForm.$invalid || user.newPassword!=user.confirmPassword"
                             ng-click="changePassword(user)">Change</button>
                 </div>
 

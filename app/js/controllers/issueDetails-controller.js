@@ -3,21 +3,22 @@
 trackerApp
     .controller('IssueDetailCtrl', [
         '$scope',
-        '$location',
         '$routeParams',
         'projectsService',
         'issuesService',
         'notifyService',
-        function($scope, $location, $routeParams, projectsService, issuesService, notifyService){
+        function($scope, $routeParams, projectsService, issuesService, notifyService){
 
-                function getIssueById (){
-                        issuesService.getIssueById($routeParams.id)
+                function getIssueById (id){
+                        issuesService.getIssueById(id)
                             .then(function success(response){
-                                    $scope.issue = response.data;
-                                    $location.path('/projects/issue.ProjectId');
+                                $scope.issue = response.data;
+                                console.log(response.data);
                             }, function error(err){
                                     notifyService.showError("Request failed!", err.statusText);
                             })
-                };
+                }
+
+            getIssueById($routeParams.id);
         }
     ]);
