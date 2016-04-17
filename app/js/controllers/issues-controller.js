@@ -18,9 +18,6 @@ trackerApp.controller('IssuesCtrl',[
             issue.ProjectId = $routeParams.id;
             issue.AssigneeId = issue.LeadId;
             issue.labels = convertLabels(issue.labels);
-
-            issue.DueDate = '05/05/2016';
-
             issuesService.addIssue(issue)
                 .then(function success(response){
                     notifyService.showInfo("Issue successful added!");

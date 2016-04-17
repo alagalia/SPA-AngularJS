@@ -1,16 +1,5 @@
 <h1>ADD Issue</h1>
-
-todo:
-<p>	Assignee: Get all users</p>
-<p>	Project: get all projects </p>
-<p>	Due: datepicker</p>
-<p>	Priority : get from this project {{id}}</p>
-<p>	 Label  : get all</p>
-<p>	 Title   : </p>
-<p>	Description (Textarea)</p>
-<p>	Create Issue (Button)</p>
-
-
+<h2>Project </h2>
 <div class="row">
     <div class="col-md-4 col-md-offset-1 border">
 
@@ -36,15 +25,19 @@ todo:
                 </textarea>
 
 
+                <label for="addIssueDate">Due date</label>
+                <input type="text"
+                       class="form-control"
+                       id="addIssueDate"
+                       placeholder="mm/dd/yyyy"
+                       required="required"
+                       ng-model="object.DueDate">
 
-                <!--Custom directive for add and edit form footer -->
                 <label for="addId"> Assignee of project: </label><br>
                 <div form-directive></div>
 
                 <br/>
                 <div priority-directive></div>
-
-
 
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"

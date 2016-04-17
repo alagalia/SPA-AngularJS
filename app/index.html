@@ -9,16 +9,18 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<script src="lib/jquery/dist/jquery.min.js"></script>
+
 <!--HEADER-->
 <a href="#projects">Dashboard</a>
 <a href="#profile/password">Profile</a>
 <a href="#logout">Logout</a>
+
 <!--MAIN-->
 <div class="container" >
     <div ng-view>
     </div>
 </div>
-
 
 <!--FOOTER-->
 <div class="container">
@@ -28,7 +30,6 @@
 </div>
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular-route/angular-route.js"></script>
-<script src="lib/jquery/dist/jquery.min.js"></script>
 <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="lib/jquery.noty/jquery.noty.js"></script>
 
@@ -50,7 +51,6 @@
 
 <script src="js/directives/formAddEditFooterDirective.js"></script>
 <script src="js/directives/user-profile-directive.js"></script>
-<script src="js/directives/datePickerDirective.js"></script>
 <script src="js/directives/prioriryDirective.js"></script>
 
 <script src="js/filters/isAdminFilter.js"></script>
