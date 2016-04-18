@@ -14,6 +14,7 @@ trackerApp.controller('IssuesCtrl',[
         function getIssueById(id) {
             issuesService.getIssueById(id)
                 .then(function success(response) {
+                    console.log(response.data)
                     $scope.issue = response.data;
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);

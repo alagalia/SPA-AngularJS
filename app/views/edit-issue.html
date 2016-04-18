@@ -44,7 +44,10 @@
                 <input ng-model="issue.labels" required="required" name="namesInput"  ng-list id="addLabel">
 
                 <br/>
-                <div priority-directive></div>
+                <label for="priorityId"> Priority: </label><br>
+                <select ng-model="object.PriorityId" required="required" id="priorityId">
+                    <option value="{{issue.Priority.Id}}">{{issue.Priority.Name}}</option>
+                </select>
 
                 <br/>
                 <a href="#/issues/{{issue.Id}}"><button class="btn btn-primary pull-right">Cancel
@@ -52,7 +55,7 @@
 
                 <button type="submit" class="btn btn-primary pull-right"
                         ng-disabled="editIssueForm.$invalid"
-                        ng-click="editIssue(issue)">Add issue
+                        ng-click="editIssue(issue)">Edit issue
                 </button>
             </div>
         </form>

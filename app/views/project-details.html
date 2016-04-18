@@ -2,10 +2,10 @@
     <div class="col-md-12">
         <h1>Project page</h1>
         <div class="jumbotron col-md-3">
-            <p>Project Id: {{projectbyId.Id}}</p>
-            <p>Project key: {{projectbyId.ProjectKey}}</p>
-            <p>Project name: {{projectbyId.Name}}</p>
-            <p>Project description: {{projectbyId.Description}}</p>
+            <p>Project Id: {{project.Id}}</p>
+            <p>Project key: {{project.ProjectKey}}</p>
+            <p>Project name: {{project.Name}}</p>
+            <p>Project description: {{project.Description}}</p>
             <a href="#/projects/{{project.Id}}/edit" ng-if="isLeader"><button class="btn-default">EDIT PROJECT</button></a>
             <a href="#/projects/{{project.Id}}/add-issue" ng-if="isLeader"><button class="btn-default">ADD ISSUE</button></a>
         </div>
@@ -28,6 +28,7 @@
                     <td>{{ issue.Assignee.Username }}</td>
                     <td>{{ issue.Status.Name }}</td>
                     <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
+                    <td><a href="#/issues/{{issue.Id}}/edit"><button>EDIT</button></a></td>
                 </tr>
                 </tbody>
             </table>
