@@ -6,46 +6,46 @@
 
             <div class="form-group">
 
-                <label for="addIssueTitle">Title</label>
+                <label for="editIssueTitle">Title</label>
                 <input type="text"
                        class="form-control"
-                       id="addIssueTitle"
+                       id="editIssueTitle"
                        placeholder="Title"
                        required="required"
                        ng-model="issue.Title"
                        ng-value= issue.Title>
 
-                <label for="addIssueDescription">Description</label>
+                <label for="editIssueDescription">Description</label>
                 <textarea row="5"
                           class="form-control"
-                          id="addIssueDescription"
+                          id="editIssueDescription"
                           placeholder="Description"
                           required="required"
                           ng-model="issue.Description">
                 </textarea>
 
 
-                <label for="addIssueDate">Due date</label>
+                <label for="editIssueDate">Due date</label>
                 <input type="text"
                        class="form-control"
-                       id="addIssueDate"
+                       id="editIssueDate"
                        placeholder="mm/dd/yyyy"
                        required="required"
                        ng-model="issue.DueDate"
                        ng-value=issue.DueDate >
 
-                <label for="addId"> Assignee: </label><br>
-                <select ng-model="issue.LeadId" required="required" id="addId" ng-controller="CommonCtrl">
+                <label for="editAssigneeId"> Assignee: </label><br>
+                <select ng-model="issue.AssigneeId" required="required" id="editAssigneeId" ng-controller="CommonCtrl">
                     <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
                 </select>
 
                 <br/>
-                <label for="addLabel"> Label </label><br>
-                <input ng-model="issue.labels" required="required" name="namesInput"  ng-list id="addLabel">
+                <label for="editLabel"> Label </label><br>
+                <input ng-model="issue.labels" required="required" name="namesInput"  ng-list id="editLabel">
 
                 <br/>
                 <label for="priorityId"> Priority: </label><br>
-                <select ng-model="object.PriorityId" required="required" id="priorityId">
+                <select ng-model="issue.PriorityId" required="required" id="priorityId">
                     <option value="{{issue.Priority.Id}}">{{issue.Priority.Name}}</option>
                 </select>
 

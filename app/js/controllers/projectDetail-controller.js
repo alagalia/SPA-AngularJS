@@ -14,7 +14,6 @@ trackerApp
                 projectsService.getProjectById(id)
                     .then(function (response) {
                             $scope.project = response.data;
-                            console.log(response.data);
                             $scope.priorities = response.data.Priorities;
                             $scope.isLeader = sessionStorage.userName === response.data.Lead.Username || sessionStorage['isAdmin'];
                         }, function (err) {

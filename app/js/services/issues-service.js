@@ -45,11 +45,11 @@ trackerApp
                         return deferred.promise;
                 }
 
-                function editIssue(issue){
+                function editIssue(issue, id){
                         var deferred = $q.defer();
                         var request = {
                                 method: 'PUT',
-                                url: BASE_URL + 'issues/' + issue.Id,
+                                url: BASE_URL + 'issues/' + id,
                                 headers: {
                                         Authorization: "Bearer "+sessionStorage["token"]
                                 },
@@ -108,6 +108,7 @@ trackerApp
                 return {
                         getIssuesByProjectId: getIssuesByProjectId,
                         addIssue : addIssue,
+                        editIssue : editIssue,
                         getIssueById : getIssueById,
                         getCommentsByIssueId : getCommentsByIssueId
                 }

@@ -5,33 +5,32 @@
 
             <div class="form-group">
 
-                <label for="addProjectname">Name</label>
+                <label for="editProjectname">Name</label>
                 <input type="text"
                        class="form-control"
-                       id="addProjectname"
+                       id="editProjectname"
                        required="required"
                        ng-model="project.Name"
                        ng-value= project.Name>
 
-                <label for="addProjectDescription">Description</label>
+                <label for="editProjectDescription">Description</label>
                 <textarea row="5"
                           class="form-control"
-                          id="addProjectDescription"
+                          id="editProjectDescription"
                           required="required"
                           ng-model= project.Description>
                 </textarea>
 
-                <label for="addProjectKey">ProjectKey</label>
+                <label for="editProjectKey">ProjectKey</label>
                 <input type="text"
                        class="form-control"
-                       id="addProjectKey" disabled
+                       id="editProjectKey" disabled
                        ng-model="project.ProjectKey"
                        placeholder="{{project.ProjectKey}}">
 
-                <label for="addProjectPriorities"> Priorities multiple select: </label><br>
+                <label for="editProjectPriorities"> Priorities multiple select: </label><br>
                 <select name="priorities"
-                        id="addProjectPriorities"
-                        required="required"
+                        id="editProjectPriorities"
                         ng-model="project.priorities" multiple>
                     <option value="Low">Low</option>
                     <option value="Normal">Normal</option>
@@ -40,18 +39,18 @@
                 </select>
 
               <br>
-                <select ng-model="project.LeadId" required="required" id="addId" ng-controller="CommonCtrl">
+                <label for="editProjectLeadId"> Project Lead select: </label><br>
+                <select ng-model="project.LeadId" required="required" id="editProjectLeadId" ng-controller="CommonCtrl">
                     <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
                 </select>
 
                 <br/>
-                <label for="addLabel"> Label </label><br>
-                <input ng-model="project.labels" required="required" name="namesInput"  ng-list id="addLabel">
-
+                <label for="editLabel"> Label </label><br>
+                <input ng-model="project.labels" required="required" name="namesInput"  ng-list id="editLabel">
 
                 <br/>
                 <button ng-controller="DashboardCtrl" type="submit" class="btn btn-primary pull-right"
-                        ng-disabled="addProjectname.$invalid"
+                        ng-disabled="editProjectForm.$invalid"
                         ng-click="editProject(project)">Edit project
                 </button>
             </div>

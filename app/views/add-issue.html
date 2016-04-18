@@ -33,19 +33,22 @@
                        required="required"
                        ng-model="issue.DueDate">
 
-                <label for="addId"> Assignee: </label><br>
-                <select ng-model="issue.LeadId" required="required" id="addId">
+
+                <br/>
+                <label for="priorityId"> Priority: </label><br>
+                <select ng-model="issue.PriorityId" required="required" id="priorityId" ng-controller="ProjectDetailCtrl">
+                    <option ng-repeat="priority in priorities | orderBy:'Name'" value="{{priority.Id}}">{{priority.Name}}</option>
+                </select>
+
+                <label for="addAssigneeId"> Assignee: </label><br>
+                <select ng-model="issue.AssigneeId" required="required" id="addAssigneeId" ng-controller="CommonCtrl">
                     <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
                 </select>
 
                 <br/>
                 <label for="addLabel"> Label </label><br>
-                <input ng-model="issue.labels" required="required" name="namesInput"  ng-list id="addLabel">
+                <input ng-model="issue.Labels" name="namesInput"  ng-list id="addLabel">
 
-
-
-                <br/>
-                <div priority-directive></div>
 
                 <br/>
                 <button type="submit" class="btn btn-primary pull-right"

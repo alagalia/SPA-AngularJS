@@ -42,17 +42,17 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/logOut.html',
             controller: 'UserCtrl'
         })
-        .when('/projects/:id/add-issue', {
-            templateUrl: 'views/add-issue.html',
-            controller: 'IssuesCtrl'
-        })
         .when('/issues/:id', {
             templateUrl: 'views/issue-details.html',
             controller: 'IssuesCtrl'
         })
+        .when('/projects/:id/add-issue', {
+            templateUrl: 'views/add-issue.html',
+            controller: 'AddIssueCtrl'
+        })
         .when('/issues/:id/edit', {
             templateUrl: 'views/edit-issue.html',
-            controller: 'IssuesCtrl'
+            controller: 'EditIssueCtrl'
         })
         .otherwise({redirectTo: '/'});
 }]);
