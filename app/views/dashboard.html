@@ -14,7 +14,7 @@
         <div class="jumbotron col-md-12">
             <table>
                 <tbody>
-                <tr ng-repeat="project in allProjects">
+                <tr ng-repeat="project in allProjects | filter: myStaff">
                     <td>{{ $index + 1 }}</td>
                     <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
                     <td>{{ project.Lead.Username }}</td>
@@ -30,17 +30,17 @@
         </div>
 
         <!--GET ALL USERS-->
-        <div class="jumbotron col-md-12">
-            <table>
-                <tbody>
-                <tr ng-repeat="user in allUsers">
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{user.Username}}</td>
-                    <td>{{user.isAdmin}}</td>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <!--<div class="jumbotron col-md-12">-->
+            <!--<table>-->
+                <!--<tbody>-->
+                <!--<tr ng-repeat="user in allUsers">-->
+                    <!--<td>{{ $index + 1 }}</td>-->
+                    <!--<td>{{user.Username}}</td>-->
+                    <!--<td>{{user.isAdmin}}</td>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
     </div>
 </div>

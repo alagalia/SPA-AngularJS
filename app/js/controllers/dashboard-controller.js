@@ -10,6 +10,10 @@ trackerApp
         'userService',
         function ($scope, $location, projectsService, notifyService, userService) {
 
+            $scope.myStaff = function (item) {
+                return item.Lead.Username === sessionStorage["userName"];
+            };
+
             var convertData = function (project){
                 project.labels = toObject(project.labels);
                 project.priorities = toObject(project.priorities);

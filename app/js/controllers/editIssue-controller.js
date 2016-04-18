@@ -39,7 +39,7 @@ trackerApp.controller('EditIssueCtrl', [
             issuesService.editIssue(issueforEdit, $routeParams.id)
                 .then(function success() {
                     notifyService.showInfo("Issue successful edited!");
-                    $location.path('#/issues/'+$routeParams.id);
+                    $location.path('/issues/'+$routeParams.id);
                 }, function error(err) {
                     notifyService.showError("Edit issue failed!", err.statusText);
                 })

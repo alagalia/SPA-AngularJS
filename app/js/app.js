@@ -20,7 +20,7 @@ var trackerApp = angular.module('trackerApp', [
             controller: 'HomeCtrl'
         })
         .when('/projects', {
-            templateUrl: 'views/projects.html',
+            templateUrl: 'views/dashboard.html',
             controller: 'DashboardCtrl'
         })
         .when('/add', {
