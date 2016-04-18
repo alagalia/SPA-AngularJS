@@ -1,23 +1,41 @@
-<div class="jumbotron col-md-9">
-    <table>
-        <thead>
-        <th>№</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>DueDate</th>
-        <th>Assignee</th>
-        <th>Status</th>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{ $index + 1 }}</td>
-            <td>{{ issue.Title}}</td>
-            <td>{{ issue.Description }}</td>
-            <td>{{ issue.DueDate}}</td>
-            <td>{{ issue.Assignee.Username }}</td>
-            <td>{{ issue.Status.Name }}</td>
-            <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
-        </tr>
-        </tbody>
-    </table>
+<div class="row">
+    <div class="jumbotron col-md-9">
+        <table>
+            <thead>
+            <th>№</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>DueDate</th>
+            <th>Assignee</th>
+            <th>Status</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ issue.Title}}</td>
+                <td>{{ issue.Description }}</td>
+                <td>{{ issue.DueDate}}</td>
+                <td>{{ issue.Assignee.Username }}</td>
+                <td>{{ issue.Status.Name }}</td>
+                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="#/issues/{{issue.Id}}/edit" ><button>EDIT</button></a>
+
+<div class="row">
+    <button class="row" ng-click="show()">Show comments</button>
+
+    <div class="row">
+        <div class="jumbotron col-md-9" ng-show="showComments">
+            <h2>Comments</h2>
+            <div ng-repeat="comment in comments">
+                <p><strong>{{ $index + 1 }}. {{comment.Text}}</strong></p>
+                <p>Author: {{comment.Author.Username}}</p>
+                <p>CreatedOn: {{comment.CreatedOn}}</p>
+            </div>
+        </div>
+    </div>
 </div>

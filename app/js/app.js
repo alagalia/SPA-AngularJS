@@ -48,7 +48,11 @@ var trackerApp = angular.module('trackerApp', [
         })
         .when('/issues/:id', {
             templateUrl: 'views/issue-details.html',
-            controller: 'IssueDetailCtrl'
+            controller: 'IssuesCtrl'
+        })
+        .when('/issues/:id/edit', {
+            templateUrl: 'views/edit-issue.html',
+            controller: 'IssuesCtrl'
         })
         .otherwise({redirectTo: '/'});
 }]);
