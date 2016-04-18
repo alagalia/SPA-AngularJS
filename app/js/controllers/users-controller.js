@@ -4,10 +4,11 @@ trackerApp
     .controller('UserCtrl', [
         '$scope',
         '$location',
+        '$window',
         'projectsService',
         'notifyService',
         'userService',
-        function ($scope, $location,projectsService, notifyService, userService) {
+        function ($scope, $location, $window, projectsService, notifyService, userService) {
 
             var id = sessionStorage['Id'];
             $scope.showForm = false;
@@ -42,7 +43,9 @@ trackerApp
                     .then(function (data) {
                             sessionStorage.clear();
                             notifyService.showInfo("Logout successful!", data);
-                            $location.path('/');
+                        $window.location.reload();
+
+                        $location.path('/');
                         }, function (err) {
                             notifyService.showError("Request reject!", err);
                         }

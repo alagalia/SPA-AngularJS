@@ -4,10 +4,11 @@ trackerApp.controller('HomeCtrl', [
     '$scope',
     '$location',
     '$timeout',
+    '$window',
     'authenticationService',
     'notifyService',
     'userService',
-    function ($scope, $location, $timeout, authenticationService, notifyService, userService) {
+    function ($scope, $location, $timeout, $window, authenticationService, notifyService, userService) {
         var getCurrentUserInfo = function () {
             userService.getCurrentUser()
                 .then(function (currentUser) {
@@ -16,8 +17,10 @@ trackerApp.controller('HomeCtrl', [
                         sessionStorage['isAdmin'] = currentUser.isAdmin;
                         $scope.currentUser = currentUser;
                         $scope.username = currentUser.username;
-                        $timeout(function () {
+
+                    $timeout(function () {
                             $scope.$apply(function () {
+                                $window.location.reload();
                                 $location.path('/projects');
                             });
                         }, 50);

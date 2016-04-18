@@ -17,6 +17,7 @@ trackerApp
             projectsService.getAllProjects()
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data;
+
                     }, function (err) {
                         var serverError = err.statusText;
                         notifyService.showError("Request failed", serverError);
