@@ -6,9 +6,9 @@ trackerApp
         '$scope',
         '$location',
         'projectsService',
+        'issuesService',
         'notifyService',
-        'userService',
-        function ($scope, $location, projectsService, notifyService, userService) {
+        function ($scope, $location, projectsService, issuesService, notifyService) {
 
             $scope.myStaff = function (item) {
                 return item.Lead.Username === sessionStorage["userName"];
@@ -40,23 +40,31 @@ trackerApp
             };
 
 
-
             projectsService.getAllProjects()
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data;
                     }, function (err) {
-                        var serverError = err.data.error_description;
+                        var serverError = err.statusText;
                         notifyService.showError("Request failed", serverError);
                     }
                 );
 
-            var getAllUsers = userService.getAllUsers()
-                .then(function (allUsers) {
-                        $scope.allUsers = allUsers;
+            issuesService.getIssues("Urgent", 20)
+                .then(function (issues) {
+                    console.log(issues.data);
                     }, function (err) {
-                        var serverError = err.data.error_description;
+                        var serverError = err.statusText;
                         notifyService.showError("Request failed", serverError);
                     }
                 );
+
+            //var getAllUsers = userService.getAllUsers()
+            //    .then(function (allUsers) {
+            //            $scope.allUsers = allUsers;
+            //        }, function (err) {
+            //            var serverError = err.data.error_description;
+            //            notifyService.showError("Request failed", serverError);
+            //        }
+            //    );
         }
     ]);

@@ -85,6 +85,25 @@ trackerApp
                         return deferred.promise;
                 }
 
+                function getIssues(priorityName, pageNumber){
+                        var deferred = $q.defer();
+                        var request = {
+                                method: 'GET',
+                                url: BASE_URL + 'issues/?filter=Priority.Name == "' + priorityName + '"&pageSize='+ pageNumber + '&pageNumber=1',
+                                headers: {
+                                        Authorization: "Bearer "+sessionStorage["token"]
+                                }
+                        };
+
+                        $http(request)
+                            .then(function(response){
+                                    deferred.resolve(response);
+                            },function(err){
+                                    deferred.reject(err);
+                            });
+                        return deferred.promise;
+                }
+
                 function getCommentsByIssueId(id){
                         var deferred = $q.defer();
                         var request = {
@@ -110,6 +129,7 @@ trackerApp
                         addIssue : addIssue,
                         editIssue : editIssue,
                         getIssueById : getIssueById,
+                        getIssues : getIssues,
                         getCommentsByIssueId : getCommentsByIssueId
                 }
         }
