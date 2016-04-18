@@ -85,12 +85,34 @@ trackerApp
                         return deferred.promise;
                 }
 
-                function getIssues(priorityName, pageNumber){
+                //AJAX with QUERY for all issues
+                function getIssues(priorityName, pageSize){
                         var deferred = $q.defer();
                         var request = {
                                 method: 'GET',
                                 //url: BASE_URL + 'issues/?filter=Priority.Name == "' + priorityName + '"&pageSize='+ pageNumber + '&pageNumber=1',
-                                url: BASE_URL + 'issues/?filter=Assignee.Username == "ala@abv.bg"&pageSize='+ pageNumber + '&pageNumber=1',
+                                url: BASE_URL + 'issues/?filter=Assignee.Username == "'+ sessionStorage["userName"]+'"&pageSize='+ pageSize + '&pageNumber=1',
+                                headers: {
+                                        Authorization: "Bearer "+sessionStorage["token"]
+                                }
+                        };
+
+                        $http(request)
+                            .then(function(response){
+                                    deferred.resolve(response);
+                            },function(err){
+                                    deferred.reject(err);
+                            });
+                        return deferred.promise;
+                }
+
+                //get ISSUES by descending order
+                function getMyIssues(priorityName, pageSize, pageNumber){
+                        var deferred = $q.defer();
+                        var request = {
+                                method: 'GET',
+                                             //issues/me?orderBy=Project.Name desc, IssueKey&pageSize=1&pageNumber=1
+                            url: BASE_URL + 'issues/me?orderBy=DueDate desc, IssueKey&pageSize='+ pageSize + '&pageNumber='+pageNumber,
                                 headers: {
                                         Authorization: "Bearer "+sessionStorage["token"]
                                 }
@@ -131,6 +153,7 @@ trackerApp
                         editIssue : editIssue,
                         getIssueById : getIssueById,
                         getIssues : getIssues,
+                        getMyIssues : getMyIssues,
                         getCommentsByIssueId : getCommentsByIssueId
                 }
         }

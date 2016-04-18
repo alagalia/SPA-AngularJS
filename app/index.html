@@ -12,10 +12,13 @@
 <script src="lib/jquery/dist/jquery.min.js"></script>
 
 <!--HEADER-->
-<a href="#projects">Dashboard</a>
-<a href="#profile/password">Profile</a>
-<a href="#logout">Logout</a>
-
+<div  ng-controller="HomeCtrl" ng-cloak="">
+    <div ng-if="isSomeoneLoggedIn">
+        <a  href="#projects">Dashboard</a>
+        <a href="#profile/password">Profile</a>
+        <a href="#logout">Logout</a>
+    </div>
+</div>
 <!--MAIN-->
 <div class="container" >
     <div ng-view>
@@ -50,6 +53,7 @@
 <script src="js/controllers/users-controller.js"></script>
 <script src="js/controllers/addIssue-Controller.js"></script>
 <script src="js/controllers/editIssue-controller.js"></script>
+<script src="js/controllers/addProject-controller.js"></script>
 
 <script src="js/directives/user-profile-directive.js"></script>
 <script src="js/directives/prioriryDirective.js"></script>

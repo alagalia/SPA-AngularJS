@@ -32,6 +32,7 @@
 
     <div class="row">
         <div class="jumbotron col-md-9" ng-show="showComments">
+            <button class="row" ng-click="">Add comment</button>
             <h2>Comments</h2>
             <div ng-repeat="comment in comments">
                 <p><strong>{{ $index + 1 }}. {{comment.Text}}</strong></p>
