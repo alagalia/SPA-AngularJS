@@ -49,8 +49,12 @@ trackerApp
                     }
                 );
 
-            issuesService.getIssues("Urgent", 20)
+            var priorityName = "Urgent";
+            var pageNumber =  20;
+            issuesService.getIssues(priorityName, pageNumber)
                 .then(function (issues) {
+                    $scope.myIssues = issues.data.Issues;
+
                     console.log(issues.data);
                     }, function (err) {
                         var serverError = err.statusText;

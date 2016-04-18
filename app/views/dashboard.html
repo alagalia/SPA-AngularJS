@@ -29,18 +29,27 @@
             </table>
         </div>
 
-        <!--GET ALL USERS-->
-        <!--<div class="jumbotron col-md-12">-->
-            <!--<table>-->
-                <!--<tbody>-->
-                <!--<tr ng-repeat="user in allUsers">-->
-                    <!--<td>{{ $index + 1 }}</td>-->
-                    <!--<td>{{user.Username}}</td>-->
-                    <!--<td>{{user.isAdmin}}</td>-->
-                    <!--</td>-->
-                <!--</tr>-->
-                <!--</tbody>-->
-            <!--</table>-->
-        <!--</div>-->
+        <!--GET MY ISSUES-->
+        <div class="jumbotron col-md-12">
+            <table>
+                <thead>
+                    <tr>
+                        <td>№</td>
+                        <td>Title</td>
+                        <td>Status</td>
+                        <td>Author</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="issue in myIssues">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{issue.Title}}</td>
+                    <td>{{issue.Author.Username}}</td>
+                    <td>{{issue.Status.Name}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

@@ -89,7 +89,8 @@ trackerApp
                         var deferred = $q.defer();
                         var request = {
                                 method: 'GET',
-                                url: BASE_URL + 'issues/?filter=Priority.Name == "' + priorityName + '"&pageSize='+ pageNumber + '&pageNumber=1',
+                                //url: BASE_URL + 'issues/?filter=Priority.Name == "' + priorityName + '"&pageSize='+ pageNumber + '&pageNumber=1',
+                                url: BASE_URL + 'issues/?filter=Assignee.Username == "ala@abv.bg"&pageSize='+ pageNumber + '&pageNumber=1',
                                 headers: {
                                         Authorization: "Bearer "+sessionStorage["token"]
                                 }
