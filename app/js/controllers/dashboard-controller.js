@@ -8,15 +8,16 @@ trackerApp
         'issuesService',
         'notifyService',
         'authService',
-        function ($scope, $location, projectsService, issuesService, notifyService, authService) {
+        '$timeout',
+        function ($scope, $location, projectsService, issuesService, notifyService, authService, $timeout) {
 
             $scope.myStaff = function (item) {
                 return item.Lead.Username === sessionStorage["userName"];
             };
 
             var userName = authService.getLoggedUser();
-
             var pageNumber = 1;
+
 
             projectsService.getMyProjects(userName,pageNumber)
                 .then(function (allProjects) {
@@ -29,7 +30,7 @@ trackerApp
 
             issuesService.getMyIssues(pageNumber)
                 .then(function (issues) {
-                        $scope.myIssues = issues.data.Issues;
+                    $scope.myIssues = issues.data.Issues;
                     }, function (err) {
                         var serverError = err.statusText;
                         notifyService.showError("Request failed", serverError);

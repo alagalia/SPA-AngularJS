@@ -37,21 +37,5 @@ trackerApp
                         }
                     );
             };
-
-            $scope.logOut = function logOut() {
-                userService.logOut()
-                    .then(function (data) {
-                            sessionStorage.clear();
-                            notifyService.showInfo("Logout successful!", data);
-                        $window.location.reload();
-
-                        $location.path('/');
-                        }, function (err) {
-                            notifyService.showError("Request reject!", err);
-                        }
-                    );
-            }
-
-
         }
     ]);

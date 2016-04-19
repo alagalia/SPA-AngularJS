@@ -16,14 +16,15 @@ trackerApp
                         project.priorities = toObject(project.priorities);
 
                         function toObject(inputArray) {
-                                //todo with foreach
-                                //labels.forEach(function (l) {
-                                //    project.Labels.push({Name: l});
-                                //});
+                            var outputArrayAsJson = [];
 
-                                var outputArrayAsJson = [];
-                                for (var i = 0; i < inputArray.length; ++i)
-                                        outputArrayAsJson.push({'Name': inputArray[i]});
+                            //todo with foreach
+                                inputArray.forEach(function (element) {
+                                    outputArrayAsJson.push({Name: element});
+                                });
+
+                                //for (var i = 0; i < inputArray.length; ++i)
+                                //        outputArrayAsJson.push({'Name': inputArray[i]});
                                 return outputArrayAsJson;
                         }
                         return project
