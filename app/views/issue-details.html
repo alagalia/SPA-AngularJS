@@ -19,9 +19,18 @@
                 <td>{{ issue.DueDate}}</td>
                 <td>{{ issue.Assignee.Username }}</td>
                 <td>{{ issue.Status.Name }}</td>
-                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader">
-                    <button>INFO</button>
-                </a></td>
+                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"></a></td>
+                <td data-ng-init="availableStatus()">
+                    <form name="changeStatusForm">
+                        <select ng-model="status" required="required" id="status">
+                            <option ng-repeat="status in availableStatus" value="{{status.Id}}">{{status.Name}}</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary pull-right"
+                                ng-disabled="status.$invalid"
+                                ng-click="changeStatus(status)">change
+                        </button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -26,7 +26,7 @@
                     <td>{{ issue.Description }}</td>
                     <td>{{ issue.DueDate}}</td>
                     <td>{{ issue.Assignee.Username }}</td>
-                    <td>{{ issue.Status.Name }}</td>
+                    <td>{{ issue.Status.Name }}{{ issue.Status.Id }}</td>
                     <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
                     <td><a href="#/issues/{{issue.Id}}/edit"><button>EDIT</button></a></td>
                 </tr>

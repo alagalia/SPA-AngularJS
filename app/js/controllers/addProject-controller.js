@@ -2,7 +2,7 @@
 
 trackerApp
 
-    .controller('AddProjectVtrl', [
+    .controller('AddProjectCtrl', [
         '$scope',
         '$location',
         'projectsService',

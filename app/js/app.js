@@ -36,7 +36,7 @@ var trackerApp = angular.module('trackerApp', [
                 })
                 .when('/add', {
                     templateUrl: 'views/add-project.html',
-                    controller: 'AddProjectVtrl',
+                    controller: 'AddProjectCtrl',
                     data: {
                         requireLogin: true
                     }
