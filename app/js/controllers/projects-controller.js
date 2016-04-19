@@ -1,24 +1,21 @@
 'use strict';
 
 trackerApp
-    .controller('DashboardCtrl', [
+    .controller('ProjectsCtrl', [
         '$scope',
         '$location',
         'projectsService',
         'issuesService',
         'notifyService',
-        'authService',
-        function ($scope, $location, projectsService, issuesService, notifyService, authService) {
+        function ($scope, $location, projectsService, issuesService, notifyService) {
+
+            var pageNumber =  1;
 
             $scope.myStaff = function (item) {
                 return item.Lead.Username === sessionStorage["userName"];
             };
 
-            var userName = authService.getLoggedUser();
-
-            var pageNumber = 1;
-
-            projectsService.getMyProjects(userName,pageNumber)
+            projectsService.getAllProjects(pageNumber)
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data.Projects;
                     }, function (err) {
@@ -27,7 +24,8 @@ trackerApp
                     }
                 );
 
-            issuesService.getMyIssues(pageNumber)
+
+            issuesService.getIssues(pageNumber)
                 .then(function (issues) {
                         $scope.myIssues = issues.data.Issues;
                     }, function (err) {

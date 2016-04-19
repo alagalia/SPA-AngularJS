@@ -17,13 +17,8 @@ trackerApp.controller('HomeCtrl', [
                         sessionStorage['isAdmin'] = currentUser.isAdmin;
                         $scope.currentUser = currentUser;
                         $scope.username = currentUser.username;
-
-                    $timeout(function () {
-                            $scope.$apply(function () {
-                                $window.location.reload();
-                                $location.path('/projects');
-                            });
-                        }, 50);
+                        $window.location.reload();
+                        $location.path('/projects');
                     }, function (err) {
                         notifyService.showError("Request failed", err.statusText);
                     }

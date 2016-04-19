@@ -5,15 +5,16 @@ trackerApp
         '$http',
         '$q',
         'BASE_URL',
-        function($http, $q, BASE_URL){
+        'pageSize',
+        function($http, $q, BASE_URL, pageSize){
             //todo AJAX to REST
 
 
-            function getAllProjects(){
+            function getAllProjects(pageNumber){
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
-                    url: BASE_URL + 'projects',
+                    url: BASE_URL + 'projects/?filter=&pageSize=' + pageSize + '&pageNumber='+pageNumber,
                     headers: {
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
@@ -29,12 +30,11 @@ trackerApp
             }
 
 
-            //todo get my projects
-            function getMyProjects(){
+            function getMyProjects(lead, pageNumber){
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
-                    url: BASE_URL + 'projects',
+                    url: BASE_URL + 'projects/?filter=Lead.Username.contains("'+lead+'")&pageSize='+pageSize+'&pageNumber='+pageNumber,
                     headers: {
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
@@ -145,6 +145,7 @@ trackerApp
 
             return {
                 getAllProjects : getAllProjects,
+                getMyProjects : getMyProjects,
                 getProjectById : getProjectById,
                 addProject : addProject,
                 editProject: editProject,

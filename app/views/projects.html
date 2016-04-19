@@ -12,10 +12,20 @@
         </div>
 
         <div class="jumbotron col-md-12">
-
+            <h3>All projects in Issue Tracking System</h3>
+            <div class="col-md-2">
+                Sort by:
+                <select title="sorted" ng-model="sort">
+                    <option value=""></option>
+                    <option value="Name">Name</option>
+                    <option value="Lead.Username">Lead</option>
+                </select>
+            </div>
+            <label for="search">Search by project name:</label>
+            <input type="text" id="search" ng-model="myFilter">
             <table>
                 <tbody>
-                <tr ng-repeat="project in allProjects">
+                <tr ng-repeat="project in allProjects  | orderBy: sort | filter: {Name : myFilter}">
                     <td>{{ $index + 1 }}</td>
                     <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
                     <td>{{ project.Lead.Username }}</td>
@@ -32,14 +42,16 @@
 
         <!--GET MY ISSUES-->
         <div class="jumbotron col-md-12">
+            <h3>All issues in Issue Tracking System</h3>
+
             <table>
                 <thead>
-                    <tr>
-                        <td>№</td>
-                        <td>Title</td>
-                        <td>Author</td>
-                        <td>Status</td>
-                    </tr>
+                <tr>
+                    <td>№</td>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>Status</td>
+                </tr>
                 </thead>
 
                 <tbody>
@@ -52,5 +64,6 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 </div>

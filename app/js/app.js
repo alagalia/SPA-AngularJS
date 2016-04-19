@@ -4,12 +4,24 @@ var trackerApp = angular.module('trackerApp', [
         'ngRoute'
     ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
+    .constant('pageSize', 5)
     .config([
         '$routeProvider',
         function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'views/wellcome.html'
+            templateUrl: 'views/wellcome.html',
+            resolve:
+            {
+                mess:function($location)
+                {
+                    if(sessionStorage.token)
+                    {
+                        $location.path('/user-profile');
+                    }
+                }
+
+            }
         })
         .when('/login', {
             templateUrl: 'views/login.html',
@@ -19,9 +31,13 @@ var trackerApp = angular.module('trackerApp', [
             templateUrl: 'views/register.html',
             controller: 'HomeCtrl'
         })
-        .when('/projects', {
+        .when('/dashboard', {
             templateUrl: 'views/dashboard.html',
             controller: 'DashboardCtrl'
+        })
+        .when('/projects', {
+            templateUrl: 'views/projects.html',
+            controller: 'ProjectsCtrl'
         })
         .when('/add', {
             templateUrl: 'views/add-project.html',
