@@ -6,7 +6,7 @@ trackerApp.controller('IssuesCtrl', [
     'notifyService',
     function ($scope, $routeParams, $location, issuesService, notifyService) {
 
-        $scope.showComments = false;
+        $scope.showComments = true;
         $scope.show = function () {
             $scope.showComments = !$scope.showComments;
         };
@@ -24,10 +24,22 @@ trackerApp.controller('IssuesCtrl', [
             issuesService.getCommentsByIssueId(id)
                 .then(function success(response) {
                     $scope.comments = response.data;
+                    notifyService.showError("Comment added successful", err.statusText);
+
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);
                 })
         }
+
+        $scope.addComment =  function(text) {
+            issuesService.addComment(text, $routeParams.id)
+                .then(function success(response) {
+                    //todo scope.apply to refresh comments data
+                    
+                }, function error(err) {
+                    notifyService.showError("Request failed!", err.statusText);
+                })
+        };
 
         var convertLabels = function toObject(inputArray) {
             var outputArrayAsJson = [];

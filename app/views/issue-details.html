@@ -19,20 +19,42 @@
                 <td>{{ issue.DueDate}}</td>
                 <td>{{ issue.Assignee.Username }}</td>
                 <td>{{ issue.Status.Name }}</td>
-                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
+                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader">
+                    <button>INFO</button>
+                </a></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-<a href="#/issues/{{issue.Id}}/edit" ><button>EDIT</button></a>
+<a href="#/issues/{{issue.Id}}/edit">
+    <button>EDIT</button>
+</a>
 
 <div class="row">
     <button class="row" ng-click="show()">Show comments</button>
 
     <div class="row">
         <div class="jumbotron col-md-9" ng-show="showComments">
-            <button class="row" ng-click="">Add comment</button>
+
+
+            <form name="addCommentForm">
+
+                <div class="form-group">
+                <textarea row="5"
+                          class="form-control"
+                          required="required"
+                          ng-model="comment.Text">
+                </textarea>
+                    <br/>
+                    <button type="submit"
+                            class="btn btn-primary pull-right"
+                            ng-click="addComment(comment.Text)">Add comment
+                    </button>
+                </div>
+            </form>
+
+
             <h2>Comments</h2>
             <div ng-repeat="comment in comments">
                 <p><strong>{{ $index + 1 }}. {{comment.Text}}</strong></p>

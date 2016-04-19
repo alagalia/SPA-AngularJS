@@ -6,7 +6,6 @@ trackerApp
         'pageSize',
         function ($http, $q, BASE_URL, pageSize) {
 
-            //todo add issue and edit issue
             function getIssuesByProjectId(id) {
                 var deferred = $q.defer();
                 var request = {
@@ -147,6 +146,26 @@ trackerApp
                 return deferred.promise;
             }
 
+            function addComment(text, id) {
+                var deferred = $q.defer();
+                var request = {
+                    method: 'POST',
+                    url: BASE_URL + 'issues/' + id + '/comments',
+                    headers: {
+                        Authorization: "Bearer " + sessionStorage["token"]
+                    },
+                    data: {text : text}
+                };
+
+                $http(request)
+                    .then(function (response) {
+                        deferred.resolve(response);
+                    }, function (err) {
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
 
             return {
                 getIssuesByProjectId: getIssuesByProjectId,
@@ -155,7 +174,8 @@ trackerApp
                 getIssueById: getIssueById,
                 getIssues: getIssues,
                 getMyIssues: getMyIssues,
-                getCommentsByIssueId: getCommentsByIssueId
+                getCommentsByIssueId: getCommentsByIssueId,
+                addComment: addComment
             }
         }
     ]);
