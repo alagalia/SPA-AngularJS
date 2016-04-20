@@ -65,6 +65,11 @@ td{
   position: absolute;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
+table {
+  width: 100%;
+}
+
+#emptydiv {
+  height: 200px;
+  background: red;
 }

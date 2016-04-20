@@ -29,7 +29,6 @@ trackerApp.controller('IssuesCtrl', [
                         .then(function(response){
                             var projectLead = response.data.Lead.Username;
                             $scope.isLeader = loggedUser == projectLead;
-                            console.log(projectLead)
                         });
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);

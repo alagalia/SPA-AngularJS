@@ -5,8 +5,10 @@ trackerApp
         function(){
 
             function isLoggedUser() {
-                return !!sessionStorage['userName'];
+                var sessionUser = sessionStorage['userName'];
+                return !!sessionUser;
             }
+
 
             function getLoggedUserName() {
                 return sessionStorage['userName'];
@@ -19,7 +21,7 @@ trackerApp
             }
 
             function isAdmin() {
-                 if(sessionStorage['isAdmin']== true){
+                 if(sessionStorage['isAdmin']== 'true'){
                      return true;
                  } else {
                      return false

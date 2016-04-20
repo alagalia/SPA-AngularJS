@@ -18,9 +18,6 @@ trackerApp
                             $scope.project = response.data;
                             $scope.priorities = response.data.Priorities;
                             $scope.isLeader = authService.getLoggedUserName() === response.data.Lead.Username;
-
-
-                            console.log('$scope.isLeader: ' + $scope.isLeader)
                         }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
                         }
@@ -30,9 +27,6 @@ trackerApp
                     .then(function (issuesById) {
                         $scope.issuesById = issuesById.data;
                         $scope.admin = authService.isAdmin();
-                        console.log('$scope.Admin ' + $scope.admin)
-
-
                     }, function (err) {
                         notifyService.showError("Request 'Get issues' failed", err.statusText);
                     })

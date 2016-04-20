@@ -1,7 +1,11 @@
+<div class="emptydiv"></div>
 <div class="row">
-
-    <div class="col-md-4 col-md-offset-1 border">
-        <form name="loginUserForm">
+    <div class="col-md-4 col-md-offset-4 text-center">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login form</h3>
+            </div>
+            <form name="loginUserForm">
             <div class="form-group">
                 <label for="loginUserEmail" class="text-center">Username</label>
                 <input type="text" required=required class="form-control" id="loginUserEmail" placeholder="Email" ng-model="loginUser.userEmail">
@@ -12,6 +16,9 @@
             <br />
             <button type="submit" class="btn btn-primary pull-right" ng-disabled="loginUserForm.$invalid" ng-click="login(loginUser)">Login</button>
         </form>
+        If you have not account? <a href="#/register">Register</a>
     </div>
 
+    </div>
 </div>
+

@@ -7,21 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/my.css">
 </head>
 <body>
 <script src="lib/jquery/dist/jquery.min.js"></script>
 
 <!--HEADER-->
-<div  ng-controller="HomeCtrl" ng-cloak="">
-    <div ng-if="isSomeoneLoggedIn">
-        <a  href="#projects">Projects</a>
-        <a  href="#dashboard">Dashboard</a>
-        <a href="#profile/password">Profile</a>
-        <a href="#logout">Logout</a>
+<div class="text-center" ng-controller="HomeCtrl">
+    <div class="navbar navbar-default" ng-if="userData.isLoggedUser()">
+        <a class="navbar-brand" href="#projects">Projects</a>
+        <a class="navbar-brand" href="#dashboard">Dashboard</a>
+        <a class="navbar-brand" href="#profile/password">Profile</a>
+        <a class="navbar-brand" href="#logout">Logout</a>
     </div>
 </div>
 <!--MAIN-->
-<div class="container" >
+<div class="container">
     <div ng-view>
     </div>
 </div>
@@ -65,6 +66,8 @@
 
 <script src="js/filters/isAdminFilter.js"></script>
 <script src="js/filters/highlight-filter.js"></script>
+
+<script type="text/javascript" src='lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js'></script>
 
 </body>
 </html>

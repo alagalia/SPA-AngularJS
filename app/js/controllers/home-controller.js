@@ -6,9 +6,10 @@ trackerApp.controller('HomeCtrl', [
     '$timeout',
     '$window',
     'authenticationService',
+    'authService',
     'notifyService',
     'userService',
-    function ($scope, $location, $timeout, $window, authenticationService, notifyService, userService) {
+    function ($scope, $location, $timeout, $window, authenticationService, authService, notifyService, userService) {
 
         var getCurrentUserInfo = function () {
             userService.getCurrentUser()
@@ -18,19 +19,15 @@ trackerApp.controller('HomeCtrl', [
                     sessionStorage['isAdmin'] = currentUser.isAdmin;
                     $scope.currentUser = currentUser;
                     $scope.username = currentUser.username;
-
-                    $timeout(function () {
-                        $window.location.reload(false);
-                    }, 500);
-
                     $location.path('/dashboard');
                 }, function (err) {
                     notifyService.showError("Request failed", err.statusText);
                 })
         };
 
-        $scope.isSomeoneLoggedIn = sessionStorage['userName'];
+        //$scope.isSomeoneLoggedIn = sessionStorage['userName'];
 
+        $scope.userData = authService;
 
         $scope.login = function (user) {
             authenticationService.loginUser(user)

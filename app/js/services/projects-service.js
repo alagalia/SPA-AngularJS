@@ -10,15 +10,16 @@ trackerApp
             //todo AJAX to REST
 
 
-            function getAllProjects(pageNumber){
+            function getAllProjects(params){
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
-                    url: BASE_URL + 'projects/?filter=&pageSize=' + pageSize + '&pageNumber='+pageNumber,
+                    url: BASE_URL + 'projects/?filter=&pageSize=' + params.pageSize + '&pageNumber='+ params.pageNumber,
                     headers: {
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
                 };
+                console.log(request.url)
 
                 $http(request)
                     .then(function(response){

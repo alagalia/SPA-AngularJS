@@ -1,15 +1,15 @@
 'use strict';
 
 var trackerApp = angular.module('trackerApp', [
-        'ngRoute'
+        'ngRoute','ui.bootstrap.pagination'
     ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
-    .constant('pageSize', 10)
+    .constant('pageSize', 5)
     .config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'views/wellcome.html'
+                    templateUrl: 'views/welcome.html'
                 })
 
                 .when('/login', {
@@ -99,6 +99,7 @@ var trackerApp = angular.module('trackerApp', [
         $rootScope.$on('$routeChangeStart', function(event, next) {
             if (next.data) {
                 if (!authService.isLoggedUser() && next.data.requireLogin) {
+                    console.log(!authService.isLoggedUser());
                     $location.path('/');
                 }
             }

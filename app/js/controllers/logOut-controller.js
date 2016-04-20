@@ -17,10 +17,6 @@ trackerApp
                     .then(function () {
                             sessionStorage.clear();
                             notifyService.showInfo("Logout successful!");
-                            $timeout(function () {
-                                $window.location.reload(false);
-                            }, 500);
-
                             $location.path('/');
                         }, function (err) {
                             notifyService.showError("Request reject!", err);

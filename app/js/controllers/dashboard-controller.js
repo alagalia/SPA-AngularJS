@@ -8,13 +8,9 @@ trackerApp
         'issuesService',
         'notifyService',
         'authService',
-        '$timeout',
-        function ($scope, $location, projectsService, issuesService, notifyService, authService, $timeout) {
+        function ($scope, $location, projectsService, issuesService, notifyService, authService) {
 
-            $scope.myStaff = function (item) {
-                return item.Lead.Username === sessionStorage["userName"];
-            };
-
+            $scope.admin = authService.isAdmin();
             var userName = authService.getLoggedUserName();
             var pageNumber = 1;
 

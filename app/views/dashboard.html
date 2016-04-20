@@ -7,7 +7,7 @@
             <div profile-Directive></div>
 
             <a href="#/add">
-                <button class="btn-default" ng-if="">Add new project /Admin only/</button>
+                <button class="btn-default" ng-if="admin">Add new project /Admin only/</button>
             </a>
         </div>
 
@@ -32,7 +32,7 @@
                     <td>{{ project.Description }}</td>
                     <td>
                         <a href="#/projects/{{project.Id}}">
-                            <button class="btn-sm">view</button>
+                            <button class="fa fa-plus-square">view</button>
                         </a>
                     </td>
                 </tr>
@@ -63,7 +63,7 @@
                     <td><a href="#/projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
                     <td>{{issue.Status.Name}}</td>
                     <td><a href="#/issues/{{issue.Id}}">
-                        <button class="btn-sm">view</button>
+                        <button  class="fa fa-plus-square">view</button>
                     </a></td>
                 </tr>
                 </tbody>

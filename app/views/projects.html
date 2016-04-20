@@ -7,9 +7,10 @@
             <div profile-Directive></div>
 
             <a href="#/add">
-                <button class="btn-default">Add new project</button>
+                <button class="btn-default" ng-if="admin">Add new project/Admin only/</button>
             </a>
         </div>
+
 
         <div class="jumbotron col-md-12">
             <h3>All projects in Issue Tracking System</h3>
@@ -24,12 +25,18 @@
             <label for="search">Search by project name:</label>
             <input type="text" id="search" ng-model="myFilter">
             <table>
+                <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Name</td>
+                    <td>Lead</td>
+                </tr>
+                </thead>
                 <tbody>
                 <tr ng-repeat="project in allProjects  | orderBy: sort | filter: {Name : myFilter}">
                     <td>{{ $index + 1 }}</td>
                     <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
                     <td>{{ project.Lead.Username }}</td>
-                    <td>{{ project.Description }}</td>
                     <td>
                         <a href="#/projects/{{project.Id}}">
                             <button class="btn-sm">view</button>
@@ -38,6 +45,12 @@
                 </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="text-center">
+            <pagination total-items="numItems" ng-model="projectRequestParams.pageNumber"
+                        items-per-page="projectRequestParams.pageSize" ng-change="getAllProjects(projectRequestParams)"
+                        max-size="20" boundary-links="true"></pagination>
         </div>
 
         <!--GET MY ISSUES-->
@@ -63,6 +76,7 @@
                 </tr>
                 </tbody>
             </table>
+
         </div>
 
     </div>
