@@ -111,7 +111,6 @@ trackerApp
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
-                    //issues/me?orderBy=Project.Name desc, IssueKey&pageSize=1&pageNumber=1
                     url: BASE_URL + 'issues/me?orderBy=DueDate desc, IssueKey&pageSize=' + pageSize + '&pageNumber=' + pageNumber,
                     headers: {
                         Authorization: "Bearer " + sessionStorage["token"]

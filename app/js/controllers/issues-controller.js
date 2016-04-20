@@ -5,9 +5,14 @@ trackerApp.controller('IssuesCtrl', [
     'issuesService',
     'notifyService',
     'statusService',
-    function ($scope, $routeParams, $location, issuesService, notifyService, statusService) {
+    'projectsService',
+    'authService',
+    function ($scope, $routeParams, $location, issuesService, notifyService, statusService, projectsService, authService) {
 
-        var issueId = $routeParams.id;
+        var issueId = $routeParams.id,
+            loggedUser = authService.getLoggedUserName();
+
+        $scope.isAdmin = authService.isAdmin();
         $scope.showComments = false;
         $scope.show = function () {
             $scope.showComments = !$scope.showComments;
@@ -16,8 +21,16 @@ trackerApp.controller('IssuesCtrl', [
         function getIssueById(id) {
             issuesService.getIssueById(id)
                 .then(function success(response) {
+                    $scope.isAssignee = loggedUser === response.data.Assignee.Username;
                     $scope.issue = response.data;
                     availableStatus(response.data.Status.Id);
+
+                    projectsService.getProjectById(response.data.Project.Id)
+                        .then(function(response){
+                            var projectLead = response.data.Lead.Username;
+                            $scope.isLeader = loggedUser == projectLead;
+                            console.log(projectLead)
+                        });
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);
                 })
@@ -37,7 +50,7 @@ trackerApp.controller('IssuesCtrl', [
                 .then(function success(response) {
                     //todo scope.apply to refresh comments data
                     notifyService.showInfo("Comment added successful");
-
+                    $location.path('/issues/'+issueId);
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);
                 })

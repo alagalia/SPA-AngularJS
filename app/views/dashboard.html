@@ -7,17 +7,27 @@
             <div profile-Directive></div>
 
             <a href="#/add">
-                <button class="btn-default">Add new project</button>
+                <button class="btn-default" ng-if="">Add new project /Admin only/</button>
             </a>
         </div>
 
         <div class="jumbotron col-md-12">
 
             <table>
+                <thead>
+                <tr>
+                    <td>№</td>
+                    <td>Name</td>
+                    <td>Author</td>
+                    <td>Lead</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
                 <tbody>
                 <tr ng-repeat="project in allProjects">
                     <td>{{ $index + 1 }}</td>
                     <td><a href="#/projects/{{project.Id}}">{{ project.Name }}</a></td>
+                    <td>{{ project.Author.Username }}</td>
                     <td>{{ project.Lead.Username }}</td>
                     <td>{{ project.Description }}</td>
                     <td>
@@ -38,6 +48,7 @@
                         <td>№</td>
                         <td>Title</td>
                         <td>Author</td>
+                        <td>Assignee</td>
                         <td>For project</td>
                         <td>Status</td>
                     </tr>
@@ -48,8 +59,12 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{issue.Title}}</td>
                     <td>{{issue.Author.Username}}</td>
+                    <td>{{issue.Assignee.Username}}</td>
                     <td><a href="#/projects/{{issue.Project.Id}}">{{issue.Project.Name}}</a></td>
                     <td>{{issue.Status.Name}}</td>
+                    <td><a href="#/issues/{{issue.Id}}">
+                        <button class="btn-sm">view</button>
+                    </a></td>
                 </tr>
                 </tbody>
             </table>

@@ -1,14 +1,14 @@
 'use strict';
 
 trackerApp
-    .factory('authService',[function(){
+    .factory('authService',[
+        function(){
 
             function isLoggedUser() {
-                var sessionUser = sessionStorage['userName'];
-                return !!sessionUser;
+                return !!sessionStorage['userName'];
             }
 
-            function getLoggedUser() {
+            function getLoggedUserName() {
                 return sessionStorage['userName'];
             }
 
@@ -18,29 +18,19 @@ trackerApp
                 }
             }
 
-        //function getCurrentUser() {
-        //
-        //        var deferred = $q.defer();
-        //        var request = {
-        //            method: 'GET',
-        //            url: BASE_URL + 'Users/me',
-        //            headers: {
-        //                Authorization: "Bearer "+sessionStorage["token"]
-        //            }
-        //        };
-        //        $http(request)
-        //            .then(function (response) {
-        //                deferred.resolve(response.data)
-        //            }, function (err) {
-        //                deferred.reject(err)
-        //            });
-        //        return deferred.promise;
-        //    }
+            function isAdmin() {
+                 if(sessionStorage['isAdmin']== true){
+                     return true;
+                 } else {
+                     return false
+                 }
+            }
 
             return {
                 isLoggedUser : isLoggedUser,
-                getLoggedUser : getLoggedUser,
-                setLoggedUser : setLoggedUser
+                getLoggedUserName : getLoggedUserName,
+                setLoggedUser : setLoggedUser,
+                isAdmin : isAdmin
             }
         }
     ]);

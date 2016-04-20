@@ -1,7 +1,11 @@
-<a href="#/projects/{{issue.Project.Id}}"><h1>Project Id: {{issue.Project.Id}}</h1></a>
-<h1>Project Name: {{issue.Project.Name}}</h1>
+<h1>
+<h1>Issue for Project: <a href="#/projects/{{issue.Project.Id}}">"{{issue.Project.Name}}" with Id: {{issue.Project.Id}}</h1></a></h1>
+<h3 ng-if="isLeader">Your are <strong>Lead</strong> of this project</h3>
+<h3 ng-if="isAssignee">Your are <strong>Assignee</strong> of this issue</h3>
+<h3 ng-if="isAdmin">Your are <strong>Admin</strong></h3>
 <div class="row">
     <div class="jumbotron col-md-9">
+
         <table>
             <thead>
             <th>№</th>
@@ -19,8 +23,7 @@
                 <td>{{ issue.DueDate}}</td>
                 <td>{{ issue.Assignee.Username }}</td>
                 <td>{{ issue.Status.Name }}</td>
-                <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"></a></td>
-                <td data-ng-init="availableStatus()">
+                <td data-ng-init="availableStatus" ng-if="isLeader || isAssignee">
                     <form name="changeStatusForm">
                         <select ng-model="status" required="required" id="status">
                             <option ng-repeat="status in availableStatus" value="{{status.Id}}">{{status.Name}}</option>
@@ -36,8 +39,8 @@
         </table>
     </div>
 </div>
-<a href="#/issues/{{issue.Id}}/edit">
-    <button>EDIT</button>
+<a href="#/issues/{{issue.Id}}/edit" ng-if="admin">
+    <button class="row">EDIT /Admin only/</button>
 </a>
 
 <div class="row">

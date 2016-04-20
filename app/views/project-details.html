@@ -1,15 +1,31 @@
 <div class="row">
     <div class="col-md-12">
-        <h1>Project page</h1>
-        <div class="jumbotron col-md-3">
-            <p>Project Id: {{project.Id}}</p>
-            <p>Project key: {{project.ProjectKey}}</p>
-            <p>Project name: {{project.Name}}</p>
-            <p>Project description: {{project.Description}}</p>
-            <a href="#/projects/{{project.Id}}/edit" ng-if="isLeader"><button class="btn-default">EDIT PROJECT</button></a>
-            <a href="#/projects/{{project.Id}}/add-issue" ng-if="isLeader"><button class="btn-default">ADD ISSUE</button></a>
+        <div class="row">
+            <h1>Project page</h1>
+            <h3 ng-if="isLeader">Your are <strong>Lead</strong> of this project</h3>
+            <h3 ng-if="isAssignee">Your are <strong>Assignee</strong> of this issue</h3>
+            <h3 ng-if="admin">Your are <strong>Admin</strong></h3>
+            <div class="col-md-3">
+                <a href="#/projects/{{project.Id}}/edit" ng-if="isLeader || isAdmin">
+                    <button class="btn-group-lg">EDIT PROJECT</button>
+                </a>
+                <a href="#/projects/{{project.Id}}/add-issue" ng-if="isLeader || isAdmin">
+                    <button class="btn-group-lg">ADD ISSUE</button>
+                </a>
+            </div>
         </div>
-        <div class="jumbotron col-md-9">
+
+        <div class="jumbotron row">
+            <p> Project name: <strong>{{project.Name}}</strong>, Project Id: {{project.Id}}, Project key: {{project.ProjectKey}}</p>
+            <p>Project description: {{project.Description}}</p>
+
+        </div>
+        <div class="row">
+
+        </div>
+        <h3>Issues</h3>
+
+        <div class="jumbotron row">
             <table>
                 <thead>
                 <th>№</th>
@@ -26,9 +42,13 @@
                     <td>{{ issue.Description }}</td>
                     <td>{{ issue.DueDate}}</td>
                     <td>{{ issue.Assignee.Username }}</td>
-                    <td>{{ issue.Status.Name }}{{ issue.Status.Id }}</td>
-                    <td><a href="#/issues/{{issue.Id}}" ng-if="isLeader"><button>INFO</button></a></td>
-                    <td><a href="#/issues/{{issue.Id}}/edit"><button>EDIT</button></a></td>
+                    <td>{{ issue.Status.Name }}</td>
+                    <td><a href="#/issues/{{issue.Id}}">
+                        <button>INFO</button>
+                    </a></td>
+                    <td><a href="#/issues/{{issue.Id}}/edit" ng-if="admin || isLeader">
+                        <button>EDIT</button>
+                    </a></td>{{admin}}
                 </tr>
                 </tbody>
             </table>

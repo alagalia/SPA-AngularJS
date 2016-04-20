@@ -6,6 +6,7 @@ trackerApp.controller('AddIssueCtrl', [
     'notifyService',
     function ($scope, $routeParams, $location, issuesService, notifyService) {
 
+        var projectId = $routeParams.id;
        var convertLabels = function toObject(inputArray) {
            //todo with foreach
             var outputArrayAsJson = [];
@@ -22,7 +23,7 @@ trackerApp.controller('AddIssueCtrl', [
             issuesService.addIssue(issueForAdd)
                 .then(function success() {
                     notifyService.showInfo("Issue successful added!");
-                    $location.path('/projects/issue.ProjectId');
+                    $location.path('/projects/'+projectId);
                 }, function error(err) {
                     notifyService.showError("Add failed!", err.statusText);
                 })

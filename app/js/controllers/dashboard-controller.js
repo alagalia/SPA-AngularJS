@@ -15,7 +15,7 @@ trackerApp
                 return item.Lead.Username === sessionStorage["userName"];
             };
 
-            var userName = authService.getLoggedUser();
+            var userName = authService.getLoggedUserName();
             var pageNumber = 1;
 
 
