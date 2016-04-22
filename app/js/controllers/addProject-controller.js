@@ -32,32 +32,10 @@ trackerApp
                     });
                     return outputArrayAsJson;
                 }
-
-                //get Lead Id
-
                 return project
             };
 
-
-  //todo DELLete
-            // $scope.val='';
-            //$scope.users = function(val) {
-            //    userService.getAllUsers()
-            //        .then(function (response) {
-            //            var filtered = [];
-            //            angular.forEach(response, function (item) {
-            //                if (item.Username.toLowerCase().indexOf(val) == 0) filtered.push(item);
-            //            });
-            //            $scope.allUsers = filtered;
-            //            $scope.all = filtered;
-            //            console.log(filtered)
-            //        }, function (err) {
-            //            notifyService.showError("'Add project' failed", err.statusText);
-            //        });
-            //}
-            //
-
-            $scope.addProject = function (project,id) {
+             $scope.addProject = function (project,id) {
                 project = convertToPureDate(project);
                 projectsService.addProject(project)
                     .then(function () {
@@ -67,17 +45,6 @@ trackerApp
                         notifyService.showError("'Add project' failed", err.statusText);
                     });
             };
-
-
-
-//ORIGINAL
-            var users = userService.getAllUsers()
-                .then(function (response) {
-                    $scope.allUsers = response;
-                }, function (err) {
-                    notifyService.showError(err.statusText);
-                });
-
 
         }
     ]);

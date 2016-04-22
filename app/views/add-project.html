@@ -34,10 +34,16 @@
                     <option value="Urgent">Urgent</option>
                 </select>
 
-                <label for="addId"> Lead of project: </label><br>
-                <select ng-model="project.LeadId" required="required" id="addId">
-                    <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
-                </select>
+                <div ng-controller="CommonCtrl">
+                    <input type="text" ng-model="val">
+                    <button ng-click="getAllUsers(val)"> search by name</button>
+
+                    <label for="addId"> Lead of project: </label><br>
+                    <select ng-model="project.LeadId" required="required" id="addId" >
+                        <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
+                    </select>
+                </div>
+
 
                 <br/>
                 <label for="addLabel"> Label </label><br>

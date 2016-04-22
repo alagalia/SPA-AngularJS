@@ -16,29 +16,25 @@ trackerApp
             };
 
             //getAllUsers and filter them
+           var filter = function filter(users, val) {
+               var filtered = [];
+               angular.forEach(users, function (item) {
+                   if (item.Username.toLowerCase().indexOf(val) == 0) filtered.push(item);
+               });
+               return filtered;
+            };
 
-            //$scope.val='';
-            //$scope.users = function(val) {
-            //    userService.getAllUsers()
-            //        .then(function (response) {
-            //            var filtered = [];
-            //            angular.forEach(response, function (item) {
-            //                if (item.Username.toLowerCase().indexOf(val) == 0) filtered.push(item);
-            //            });
-            //            $scope.allUsers = filtered;
-            //        }, function (err) {
-            //            notifyService.showError("'Add project' failed", err.statusText);
-            //        });
-            //}
-
-            //todo DELLete
-            //userService.getAllUsers()
-            //    .then(function (allUsers) {
-            //            $scope.allUsers = allUsers;
-            //        }, function (err) {
-            //            notifyService.showError("Request failed", err.statusText);
-            //        }
-            //    );
+            $scope.getAllUsers = function(val){
+                console.log('aaaaaaaaaaaaaa')
+                userService.getAllUsers()
+                .then(function (allUsers) {
+                        $scope.allUsers = filter(allUsers, val);
+                    console.log($scope.allUsers)
+                    }, function (err) {
+                        notifyService.showError("Request failed", err.statusText);
+                    }
+                );
+            };
 
             //todo autocomplete
 

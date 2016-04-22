@@ -8,10 +8,10 @@ trackerApp.controller('AddIssueCtrl', [
 
         var projectId = $routeParams.id;
         var convertLabels = function toObject(inputArray) {
-            //todo with foreach
             var outputArrayAsJson = [];
-            for (var i = 0; i < inputArray.length; ++i)
-                outputArrayAsJson.push({'Name': inputArray[i]});
+            inputArray.forEach(function (element) {
+                outputArrayAsJson.push({Name: element});
+            });
             return outputArrayAsJson;
         };
 
