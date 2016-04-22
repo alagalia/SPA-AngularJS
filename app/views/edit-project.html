@@ -12,14 +12,14 @@
                        id="editProjectname"
                        required="required"
                        ng-model="project.Name"
-                       ng-value= project.Name>
+                       ng-value=project.Name>
 
                 <label for="editProjectDescription">Description</label>
                 <textarea row="5"
                           class="form-control"
                           id="editProjectDescription"
                           required="required"
-                          ng-model= project.Description>
+                          ng-model=project.Description>
                 </textarea>
 
                 <label for="editProjectKey">ProjectKey</label>
@@ -38,26 +38,25 @@
                     <option value="High">High</option>
                     <option value="Urgent">Urgent</option>
                 </select>
+                <br/>
 
-              <br>
-
-
-
-                <div  class="searchBox" ng-controller="CommonCtrl" ng-if="!isLeader">
+                <div class="searchBox" ng-controller="CommonCtrl" ng-if="!isLeader">
                     <label for="searchName"> Get name of user from Assignee input </label><br>
-                    <input type="text" ng-model="val"  id="searchName" placeholder="Name of user">
+                    <input type="text" ng-model="val" id="searchName" placeholder="Name of user">
                     <button ng-click="getAllUsers(val)"> search by name</button>
 
                     <label for="addId"> Lead of project: </label><br>
-                    <select ng-model="project.LeadId" required="required" id="addId" >
-                        <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
+                    <select ng-model="project.LeadId" required="required" id="addId">
+                        <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">
+                            {{user.Username}}
+                        </option>
                     </select>
                 </div>
 
 
                 <br/>
                 <label for="editLabel"> Label </label><br>
-                <input ng-model="project.labels" required="required" name="namesInput"  ng-list id="editLabel">
+                <input ng-model="project.labels" required="required" name="namesInput" ng-list id="editLabel">
 
                 <br/>
                 <button ng-controller="DashboardCtrl" type="submit" class="btn btn-primary pull-right"

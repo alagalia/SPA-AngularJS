@@ -45,8 +45,12 @@
                     </tr>
                     </tbody>
                 </table>
-                <a href="#/issues/{{issue.Id}}/edit" ng-if="isAdmin"><button>EDIT /Admin only/</button></a>
-                <a><button ng-click="show()">Show comments</button></a>
+                <a href="#/issues/{{issue.Id}}/edit" ng-if="isAdmin">
+                    <button>EDIT /Admin only/</button>
+                </a>
+                <a>
+                    <button ng-click="show()">Show comments</button>
+                </a>
             </div>
 
         </div>
@@ -67,6 +71,7 @@
                                       ng-model="comment.Text">
                             </textarea>
                             <br/>
+
                             <button type="submit"
 
                                     class="btn btn-primary pull-right"
