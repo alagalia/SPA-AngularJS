@@ -42,6 +42,14 @@ trackerApp
                  issuesService.getIssuesByProjectId(id)
                      .then(function (issuesById) {
                          $scope.issuesById = issuesById.data;
+                         $scope.assignees =[];
+                         $scope.issuesById.forEach(function(element){
+                             if($scope.assignees.indexOf(element.Assignee.Username) === -1){
+                                 console.log($scope.assignees.indexOf(element))
+
+                                 $scope.assignees.push(element.Assignee.Username)
+                             }
+                         });
                          $scope.admin = authService.isAdmin();
                      }, function (err) {
                          notifyService.showError("Request 'Get issues' failed", err.statusText);
@@ -51,11 +59,11 @@ trackerApp
             var convertData = function (project) {
                 project.labels = toObject(project.labels);
                 project.priorities = toObject(project.priorities);
-
                 function toObject(inputArray) {
                     var outputArrayAsJson = [];
-                    for (var i = 0; i < inputArray.length; ++i)
-                        outputArrayAsJson.push({'Name': inputArray[i]});
+                    inputArray.forEach(function (element) {
+                        outputArrayAsJson.push({Name: element});
+                    });
                     return outputArrayAsJson;
                 }
 

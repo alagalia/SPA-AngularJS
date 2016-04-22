@@ -63,10 +63,9 @@ trackerApp
             };
 
             $scope.getAllProjectsByName = function(val){
-                console.log(val)
                 projectsService.getAllProjectsByName(val, pageNumber)
                     .then(function (allProjects) {
-                            $scope.allProjects = allProjects.data.Projects;
+                        $scope.allProjects = allProjects.data.Projects;
                         }, function (err) {
                             var serverError = err.statusText;
                             notifyService.showError("Request failed", serverError);
