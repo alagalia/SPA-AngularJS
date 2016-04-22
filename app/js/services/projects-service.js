@@ -29,6 +29,25 @@ trackerApp
                 return deferred.promise;
             }
 
+            function getAllProjectsByName(name, pageNumber){
+                var deferred = $q.defer();
+                var request = {
+                    method: 'GET',
+                    url: BASE_URL + 'projects/?filter=Name.contains("'+name+'")&pageSize=' + pageSize + '&pageNumber='+ pageNumber,
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+
+                $http(request)
+                    .then(function(response){
+                        deferred.resolve(response);
+                    },function(err){
+                        deferred.reject(err);
+                    });
+                return deferred.promise;
+            }
+
 
             function getMyProjects(lead, pageNumber){
                 var deferred = $q.defer();
@@ -146,6 +165,7 @@ trackerApp
 
             return {
                 getAllProjects : getAllProjects,
+                getAllProjectsByName : getAllProjectsByName,
                 getMyProjects : getMyProjects,
                 getProjectById : getProjectById,
                 addProject : addProject,

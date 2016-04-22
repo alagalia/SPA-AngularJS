@@ -5,8 +5,6 @@ trackerApp
         'BASE_URL',
         function ($http, $q, BASE_URL) {
 
-
-
             function getCurrentUser() {
 
                 var deferred = $q.defer();
@@ -69,7 +67,6 @@ trackerApp
             }
 
             function logOut() {
-
                 var deferred = $q.defer();
                 var request = {
                     method: 'POST',

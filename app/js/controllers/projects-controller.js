@@ -39,7 +39,40 @@ trackerApp
                     );
             };
 
+            $scope.getAllProjects = function (params) {
+                projectsService.getAllProjects(params)
+                    .then(function (allProjects) {
+                            $scope.allProjects = allProjects.data.Projects;
+                            $scope.numItems = allProjects.data.TotalPages;
+                        }, function (err) {
+                            var serverError = err.statusText;
+                            notifyService.showError("Request failed", serverError);
+                        }
+                    );
+            };
 
+            $scope.getProjectsByLead = function(val){
+                projectsService.getMyProjects(val, pageNumber)
+                    .then(function (allProjects) {
+                            $scope.allProjects = allProjects.data.Projects;
+                        }, function (err) {
+                            var serverError = err.statusText;
+                            notifyService.showError("Request failed", serverError);
+                        }
+                    );
+            };
+
+            $scope.getAllProjectsByName = function(val){
+                console.log(val)
+                projectsService.getAllProjectsByName(val, pageNumber)
+                    .then(function (allProjects) {
+                            $scope.allProjects = allProjects.data.Projects;
+                        }, function (err) {
+                            var serverError = err.statusText;
+                            notifyService.showError("Request failed", serverError);
+                        }
+                    );
+            }
 
             //--------------START Pagination ---------------//
 

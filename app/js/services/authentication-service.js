@@ -32,20 +32,21 @@ trackerApp
             function registerUser(regiserUser) {
 
                 var deferred = $q.defer();
-                var userEmail = regiserUser.userEmail;
-                var password = regiserUser.password;
-                var confirmPassword = regiserUser.password;
                 var request = {
                     method: 'POST',
                     url: BASE_URL + 'api/Account/Register',
-                    data: "grant_type=password&Email=" + userEmail + "&password=" + password + "&ConfirmPassword=" + confirmPassword,
+
+                    data: {
+                        'Email': regiserUser.userEmail,
+                        'Password' : regiserUser.password,
+                        'ConfirmPassword': regiserUser.confirmPassword
+                    },
                     headers: {
                         ContentType: "application/x-www-form-urlencoded"
                     }
                 };
                 $http(request)
                     .then(function (response) {
-                        console.log(response.data);
                         deferred.resolve(response.data)
                     }, function (err) {
                         deferred.reject(err)

@@ -89,11 +89,9 @@ var trackerApp = angular.module('trackerApp', [
 
     //------------------------------------
     .run(function($location, $rootScope, authService) {
-
         $rootScope.$on('$routeChangeStart', function(event, next) {
             if (next.data) {
                 if (!authService.isLoggedUser() && next.data.requireLogin) {
-                    console.log(!authService.isLoggedUser());
                     $location.path('/');
                 }
             }

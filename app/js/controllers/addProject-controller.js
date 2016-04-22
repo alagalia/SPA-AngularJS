@@ -18,7 +18,13 @@ trackerApp
                 //produce projectKey
                 var str = project.Name;
                 var matches = str.match(/\b(\w)/g);
-                var acronym = matches.join('');
+                var acronym;
+                if (!matches) {
+                    acronym = str.slice(0, 2)
+                }
+                else {
+                    acronym = matches.join('')
+                }
                 project.ProjectKey = acronym.toUpperCase();
 
                 //set Name property
@@ -32,10 +38,11 @@ trackerApp
                     });
                     return outputArrayAsJson;
                 }
+
                 return project
             };
 
-             $scope.addProject = function (project,id) {
+            $scope.addProject = function (project, id) {
                 project = convertToPureDate(project);
                 projectsService.addProject(project)
                     .then(function () {

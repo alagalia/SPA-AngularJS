@@ -41,12 +41,11 @@ trackerApp.controller('HomeCtrl', [
 
         $scope.register = function (user) {
             authenticationService.registerUser(user)
-                .then(function (loggedInUser) {
-                    notifyService.showInfo("Login successful");
-                    sessionStorage['token'] = loggedInUser.access_token;
-                    getCurrentUserInfo();
+                .then(function (user) {
+                    notifyService.showInfo("Register successful. Please LogIn!");
+                    $location.path('/');
                 }, function (err) {
-                    notifyService.showError("Login failed", err.statusText);
+                    notifyService.showError("Register failed", err.statusText);
                 });
         };
     }

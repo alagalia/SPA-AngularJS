@@ -15,7 +15,7 @@ trackerApp
             var pageNumber = 1;
 
 
-            projectsService.getMyProjects(userName,pageNumber)
+            projectsService.getMyProjects(userName, pageNumber)
                 .then(function (allProjects) {
                         $scope.allProjects = allProjects.data.Projects;
                     }, function (err) {
