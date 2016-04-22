@@ -1,7 +1,11 @@
-.emptydiv {
-    height: 100px;
+.blueDiv {
+    height: 10px;
+    margin-top: 5px;
+    background-color: #337ab7;
 }
-
+.myheader {
+    padding-top: 20px
+}
 .panel-primary{
     padding: 30px;
 }
@@ -13,4 +17,43 @@
 
 .form-group {
     padding: 15px;
+}
+
+.logo img {
+    height: 70px;
+    margin-left:20px ;
+    top:20px
+}
+
+.userInfo {
+    padding-top: 20px;
+    margin-right: 180px;
+    margin-left: 100px;
+}
+
+.profileInfo {
+    background: rgba(5, 0, 76, 0.03);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.page-header {
+    color: rgba(0, 0, 0, 0.63);
+    padding-left: 20px;
+}
+
+.jumbotron{
+    padding: 5px;
+}
+
+.logreg {
+    margin-top: 40px;
+}
+
+a {
+    cursor: default;
+}
+
+.red {
+    color: red;
 }

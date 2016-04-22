@@ -47,9 +47,8 @@ trackerApp.controller('IssuesCtrl', [
         $scope.addComment =  function addComment(text) {
             issuesService.addComment(text, issueId)
                 .then(function success(response) {
-                    //todo scope.apply to refresh comments data
                     notifyService.showInfo("Comment added successful");
-                    $location.path('/issues/'+issueId);
+                    $location.path('/issues');
                 }, function error(err) {
                     notifyService.showError("Request failed!", err.statusText);
                 })

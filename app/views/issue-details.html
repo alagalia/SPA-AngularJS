@@ -1,77 +1,86 @@
-<h1>
-    <h1>Issue for Project: <a href="#/projects/{{issue.Project.Id}}">"{{issue.Project.Name}}" with Id:
-        {{issue.Project.Id}}</h1></a></h1>
-<h3 ng-if="isLeader">Your are <strong>Lead</strong> of this project</h3>
-<h3 ng-if="isAssignee">Your are <strong>Assignee</strong> of this issue</h3>
-<h3 ng-if="isAdmin">Your are <strong>Admin</strong></h3>
 <div class="row">
-    <div class="jumbotron col-md-9">
+    <div class="col-md-12">
+        <h2 class="page-header">Issue for Project:
+            <a href="#/projects/{{issue.Project.Id}}">"{{issue.Project.Name}}" with Id:{{issue.Project.Id}}</a></h2>
+        <div class="row profileInfo">
+            <span ng-if="isLeader">|___ Your are <strong class="red">Lead</strong> of this project ___|</span>
+            <span ng-if="isAssignee">|___Your are <strong class="red">Assignee</strong> of this issue ___|</span>
+            <span ng-if="isAdmin">|___Your are <strong class="red">Admin</strong> ___|</span>
+        </div>
+        <h3>Issue info & comments</h3>
 
-        <table>
-            <thead>
-            <th>№</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>DueDate</th>
-            <th>Assignee</th>
-            <th>Status</th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{ $index + 1 }}</td>
-                <td>{{ issue.Title}}</td>
-                <td>{{ issue.Description }}</td>
-                <td>{{ issue.DueDate}}</td>
-                <td>{{ issue.Assignee.Username }}</td>
-                <td>{{ issue.Status.Name }}</td>
-                <td data-ng-init="availableStatus" ng-if="isLeader || isAssignee">
-                    <form name="changeStatusForm">
-                        <select ng-model="status" required="required" id="status">
-                            <option ng-repeat="status in availableStatus" value="{{status.Id}}">{{status.Name}}</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary pull-right"
-                                ng-disabled="status.$invalid"
-                                ng-click="changeStatus(status)">change
-                        </button>
+        <div class="row">
+            <div class="jumbotron col-md-12">
+
+                <table>
+                    <thead>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>DueDate</th>
+                    <th>Assignee</th>
+                    <th>Status</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ issue.Title}}</td>
+                        <td>{{ issue.Description }}</td>
+                        <td>{{ issue.DueDate}}</td>
+                        <td>{{ issue.Assignee.Username }}</td>
+                        <td>{{ issue.Status.Name }}</td>
+
+                        <td data-ng-init="availableStatus" ng-if="isLeader || isAssignee">
+                            <form name="changeStatusForm">
+                                <select ng-model="status" required="required" id="status">
+                                    <option ng-repeat="status in availableStatus" value="{{status.Id}}">
+                                        {{status.Name}}
+                                    </option>
+                                </select>
+                                <button type="submit" class="btn-default"
+                                        ng-disabled="status.$invalid"
+                                        ng-click="changeStatus(status)">change
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="#/issues/{{issue.Id}}/edit" ng-if="isAdmin"><button>EDIT /Admin only/</button></a>
+                <a><button ng-click="show()">Show comments</button></a>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="row">
+                <div class="jumbotron col-md-9 col-lg-offset-1" ng-show="showComments">
+                    <p class="red" ng-if="!isAssignee"> You are not allowed to write a comment! You are not
+                        assignee in
+                        this issues.</p>
+                    <form name="addCommentForm" ng-if="isAssignee" style="margin-bottom: 30px">
+                        <div class="form-group">
+                            <textarea row="5"
+                                      class="form-control"
+                                      required="required"
+                                      ng-model="comment.Text">
+                            </textarea>
+                            <br/>
+                            <button type="submit"
+
+                                    class="btn btn-primary pull-right"
+                                    ng-click="addComment(comment.Text)">Add comment
+                            </button>
+                        </div>
                     </form>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<a href="#/issues/{{issue.Id}}/edit" ng-if="admin">
-    <button class="row">EDIT /Admin only/</button>
-</a>
 
-<div class="row">
-    <button class="row" ng-click="show()">Show comments</button>
 
-    <div class="row">
-        <div class="jumbotron col-md-9" ng-show="showComments">
-
-            <p style="color: red" ng-if="!isAssignee"> You are not allowed to write a comment! You are not assignee in this issues.</p>
-            <form name="addCommentForm" ng-if="isAssignee">
-                <div class="form-group">
-                <textarea row="5"
-                          class="form-control"
-                          required="required"
-                          ng-model="comment.Text">
-                </textarea>
-                    <br/>
-                    <button type="submit"
-                            class="btn btn-primary pull-right"
-                            ng-click="addComment(comment.Text)">Add comment
-                    </button>
+                    <div ng-repeat="comment in comments">
+                        <p style="background-color: gainsboro"><strong>{{ $index + 1 }}. {{comment.Text}}</strong></p>
+                        <p>Author: {{comment.Author.Username}}</p>
+                        <p>CreatedOn: {{comment.CreatedOn}}</p>
+                    </div>
                 </div>
-            </form>
-
-
-            <h2>Comments</h2>
-            <div ng-repeat="comment in comments">
-                <p><strong>{{ $index + 1 }}. {{comment.Text}}</strong></p>
-                <p>Author: {{comment.Author.Username}}</p>
-                <p>CreatedOn: {{comment.CreatedOn}}</p>
             </div>
         </div>
     </div>

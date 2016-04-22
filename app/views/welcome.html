@@ -1,4 +1,4 @@
 <div ng-cloak>
-    <div ng-include="" src="'views/templates/mainPageNotLogged.html'" ng-if="!userData.isLoggedUser()"></div>
-    <div ng-include="" src="'views/templates/mainPageLoggedUser.html'" ng-if="userData.isLoggedUser()"></div>
+    <div ng-include="'views/templates/mainPageNotLogged.html'" ng-if="!userData.isLoggedUser()"></div>
+    <div ng-include="'views/templates/mainPageLoggedUser.html'" ng-if="userData.isLoggedUser()"></div>
 </div>

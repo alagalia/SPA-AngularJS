@@ -14,66 +14,81 @@
 <script src="lib/jquery/dist/jquery.min.js"></script>
 
 <!--HEADER-->
-<div class="container text-center" ng-controller="HomeCtrl">
-    <div class="navbar navbar-inverse" ng-if="userData.isLoggedUser()">
-        <a class="navbar-brand" href="#projects">Projects</a>
-        <a class="navbar-brand" href="#dashboard">Dashboard</a>
-        <a class="navbar-brand" href="#profile/password">Profile</a>
-        <div profile-Directive></div>
-        <a class="navbar-brand" href="#logout">Logout</a>
+<div class="row logo" ng-controller="HomeCtrl">
+    <a href="#projects"><div class="col-md-3"><img src="img/Logo1.png"></div></a>
+    <div class="col-md-9" ng-if="userData.isLoggedUser()">
+        <div class="row myheader">
+            <a profile-Directive class="userInfo pull-left"></a>
+            <a class="navbar-brand" href="#projects">Projects</a>
+            <a class="navbar-brand" href="#dashboard">Dashboard</a>
+            <a class="navbar-brand" href="#profile/password">Profile</a>
+            <a class="navbar-brand" href="#logout">Logout</a>
+        </div>
     </div>
 </div>
-<!--MAIN-->
-<div class="container">
-    <div ng-view>
+<div class="blueDiv">
+    <div class="container text-center" ng-controller="HomeCtrl">
+        <!--<div class="navbar navbar-inverse" ng-if="userData.isLoggedUser()">-->
+            <!--<a class="navbar-brand" href="#projects">Projects</a>-->
+            <!--<a class="navbar-brand" href="#dashboard">Dashboard</a>-->
+            <!--<a class="navbar-brand" href="#profile/password">Profile</a>-->
+            <!--<div profile-Directive></div>-->
+            <!--<a class="navbar-brand" href="#logout">Logout</a>-->
+        <!--</div>-->
     </div>
-</div>
 
-<!--FOOTER-->
-<div class="container">
-    <footer class="text-center">
-        <h5>Issues Tracking System, SoftUni AngularJs, 2016
-        </h5>
-    </footer>
-</div>
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular-route/angular-route.js"></script>
-<script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
-<script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!--MAIN-->
+    <div class="container">
+        <div ng-view>
+        </div>
+    </div>
 
-<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="lib/jquery.noty/jquery.noty.js"></script>
+    <!--FOOTER-->
+    <div class="container footer">
+        <hr/>
+        <footer class="text-center">
+            <h5>Issues Tracking System, SoftUni AngularJs, 2016
+            </h5>
+        </footer>
+    </div>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-<script src="js/app.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="lib/jquery.noty/jquery.noty.js"></script>
 
-<script src="js/services/authentication-service.js"></script>
-<script src="js/services/notify-service.js"></script>
-<script src="js/services/issues-service.js"></script>
-<script src="js/services/projects-service.js"></script>
-<script src="js/services/user-service.js"></script>
-<script src="js/services/authorization.js"></script>
-<script src="js/services/status-service.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="js/services/authentication-service.js"></script>
+    <script src="js/services/notify-service.js"></script>
+    <script src="js/services/issues-service.js"></script>
+    <script src="js/services/projects-service.js"></script>
+    <script src="js/services/user-service.js"></script>
+    <script src="js/services/authorization.js"></script>
+    <script src="js/services/status-service.js"></script>
 
 
-<script src="js/controllers/home-controller.js"></script>
-<script src="js/controllers/dashboard-controller.js"></script>
-<script src="js/controllers/projects-controller.js"></script>
-<script src="js/controllers/issues-controller.js"></script>
-<script src="js/controllers/projectDetail-controller.js"></script>
-<script src="js/controllers/commonCtrl.js"></script>
-<script src="js/controllers/users-controller.js"></script>
-<script src="js/controllers/addIssue-Controller.js"></script>
-<script src="js/controllers/editIssue-controller.js"></script>
-<script src="js/controllers/addProject-controller.js"></script>
-<script src="js/controllers/logOut-controller.js"></script>
+    <script src="js/controllers/home-controller.js"></script>
+    <script src="js/controllers/dashboard-controller.js"></script>
+    <script src="js/controllers/projects-controller.js"></script>
+    <script src="js/controllers/issues-controller.js"></script>
+    <script src="js/controllers/projectDetail-controller.js"></script>
+    <script src="js/controllers/commonCtrl.js"></script>
+    <script src="js/controllers/users-controller.js"></script>
+    <script src="js/controllers/addIssue-Controller.js"></script>
+    <script src="js/controllers/editIssue-controller.js"></script>
+    <script src="js/controllers/addProject-controller.js"></script>
+    <script src="js/controllers/logOut-controller.js"></script>
 
-<script src="js/directives/user-profile-directive.js"></script>
-<script src="js/directives/prioriryDirective.js"></script>
+    <script src="js/directives/user-profile-directive.js"></script>
+    <script src="js/directives/prioriryDirective.js"></script>
 
-<script src="js/filters/isAdminFilter.js"></script>
-<script src="js/filters/highlight-filter.js"></script>
+    <script src="js/filters/isAdminFilter.js"></script>
+    <script src="js/filters/highlight-filter.js"></script>
 
-<script type="text/javascript" src='lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js'></script>
+    <script type="text/javascript" src='lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js'></script>
 
 </body>
 </html>

@@ -1,12 +1,16 @@
-<h1>User profile</h1>
+<div>
+    <h2 class="page-header">User profile</h2>
+    <div class="profileInfo" ng-controller="CommonCtrl">
+        <p>Username: {{currentUser.Username}}</p>
+        <p>Id: {{currentUser.Id}}</p>
+        <p>Authentication status: {{currentUser.isAdmin}}</p>
+    </div>
 
-<div profile-Directive></div>
-
+</div>
 <div ng-controller="UserCtrl">
     <div class="row text-center">
         <h4>Do you want to change password: </h4>
         <button class="btn-group-lg" ng-click="show()">Change password</button>
-
     </div>
     <div class="row" ng-show="showForm">
         <br/>

@@ -32,5 +32,17 @@ trackerApp
                         notifyService.showError("Request failed", serverError);
                     }
                 );
+
+            $scope.projectsPreview = true;
+            $scope.issuesPreview = false;
+            $scope.showOtherTab = function(tab){
+                if(tab == 'projects'){
+                    $scope.projectsPreview = true;
+                    $scope.issuesPreview = false
+                } else {
+                    $scope.projectsPreview = false;
+                    $scope.issuesPreview = true
+                }
+            }
         }
     ]);

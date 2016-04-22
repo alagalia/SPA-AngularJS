@@ -35,7 +35,7 @@ trackerApp.controller('HomeCtrl', [
                     sessionStorage['token'] = loggedInUser.access_token;
                     getCurrentUserInfo()
                 }, function (err) {
-                    notifyService.showError("Login failed", err.statusText);
+                    notifyService.showError("Login failed", err.data.error_description);
                 });
         };
 

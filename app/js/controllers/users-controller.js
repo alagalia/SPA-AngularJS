@@ -32,6 +32,7 @@ trackerApp
                 userService.changePassword(user)
                     .then(function (data) {
                             notifyService.showInfo("Password is changed!", data);
+                        $location.path('/dashboards');
                         }, function (err) {
                             notifyService.showError("Password is not changed!", err);
                         }

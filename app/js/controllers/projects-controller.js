@@ -37,12 +37,13 @@ trackerApp
                             notifyService.showError("Request failed", serverError);
                         }
                     );
-            }
+            };
 
 
 
             //--------------START Pagination ---------------//
 
+            //todo get number of projects from date base
             $scope.numItems = 100;
             $scope.projectRequestParams = {
                 pageNumber: 1,
@@ -72,8 +73,13 @@ trackerApp
             $scope.projectsPreview = true;
             $scope.issuesPreview = false;
             $scope.showOtherTab = function(tab){
-                $scope.projectsPreview =!$scope.projectsPreview;
-                $scope.issuesPreview = !$scope.issuesPreview
+                if(tab == 'projects'){
+                    $scope.projectsPreview = true;
+                    $scope.issuesPreview = false
+                } else {
+                    $scope.projectsPreview = false;
+                    $scope.issuesPreview = true
+                }
             }
         }
     ]);
