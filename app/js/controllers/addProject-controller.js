@@ -38,7 +38,6 @@ trackerApp
                     });
                     return outputArrayAsJson;
                 }
-
                 return project
             };
 

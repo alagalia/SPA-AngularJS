@@ -48,9 +48,6 @@ trackerApp
                      })
             };
 
-
-
-
             var convertData = function (project) {
                 project.labels = toObject(project.labels);
                 project.priorities = toObject(project.priorities);

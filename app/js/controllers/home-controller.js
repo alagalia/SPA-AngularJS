@@ -29,8 +29,9 @@ trackerApp.controller('HomeCtrl', [
         $scope.userData = authService;
 
         $scope.login = function (user) {
+            console.log(user);
             authenticationService.loginUser(user)
-                .then(function (loggedInUser) {
+            .then(function (loggedInUser) {
                     notifyService.showInfo("Login successful");
                     sessionStorage['token'] = loggedInUser.access_token;
                     getCurrentUserInfo()
@@ -41,9 +42,13 @@ trackerApp.controller('HomeCtrl', [
 
         $scope.register = function (user) {
             authenticationService.registerUser(user)
-                .then(function (user) {
-                    notifyService.showInfo("Register successful. Please LogIn!");
-                    $location.path('/');
+                .then(function () {
+                    var userClear = {
+                        userEmail: user.userEmail,
+                        password : user.password
+                    };
+                    $scope.login(userClear);
+                    notifyService.showInfo("Register successful!");
                 }, function (err) {
                     notifyService.showError("Register failed", err.statusText);
                 });
