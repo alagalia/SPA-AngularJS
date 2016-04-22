@@ -39,8 +39,10 @@
                 </select>
 
               <br>
-                <label for="editProjectLeadId"> Project Lead select: </label><br>
-                <select ng-model="project.LeadId" required="required" id="editProjectLeadId" ng-controller="CommonCtrl">
+
+                <label for="editProjectLeadId" ng-if="!isLeader"> Project Lead select: </label><br>
+                <label for="editProjectLeadId" ng-if="isLeader"> Project Lead is: YOU</label><br>
+                <select ng-model="project.LeadId" required="required" id="editProjectLeadId" ng-controller="CommonCtrl" ng-if="!isLeader">
                     <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
                 </select>
 

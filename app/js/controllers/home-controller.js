@@ -25,7 +25,6 @@ trackerApp.controller('HomeCtrl', [
                 })
         };
 
-        //$scope.isSomeoneLoggedIn = sessionStorage['userName'];
 
         $scope.userData = authService;
 

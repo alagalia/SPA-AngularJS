@@ -3,53 +3,81 @@
 trackerApp
 
     .controller('AddProjectCtrl', [
+        '$http',
         '$scope',
         '$location',
         'projectsService',
         'issuesService',
         'notifyService',
         'userService',
-        function ($scope, $location, projectsService, issuesService, notifyService, userService) {
+        function ($http, $scope, $location, projectsService, issuesService, notifyService, userService) {
 
-                var convertData = function (project){
-                        project.labels = toObject(project.labels);
-                        project.priorities = toObject(project.priorities);
 
-                        function toObject(inputArray) {
-                            var outputArrayAsJson = [];
+            var convertToPureDate = function (project) {
 
-                            //todo with foreach
-                                inputArray.forEach(function (element) {
-                                    outputArrayAsJson.push({Name: element});
-                                });
+                //produce projectKey
+                var str = project.Name;
+                var matches = str.match(/\b(\w)/g);
+                var acronym = matches.join('');
+                project.ProjectKey = acronym.toUpperCase();
 
-                                //for (var i = 0; i < inputArray.length; ++i)
-                                //        outputArrayAsJson.push({'Name': inputArray[i]});
-                                return outputArrayAsJson;
-                        }
-                        return project
-                };
+                //set Name property
+                project.labels = toObject(project.labels);
+                project.priorities = toObject(project.priorities);
 
-                $scope.addProject = function (object) {
-                        //todo project. ProjectKey from first letters
-                        object = convertData(object);
-                        projectsService.addProject(object)
-                            .then(function () {
-                                    notifyService.showInfo("Project added successful");
-                                    $location.path('/projects');
-                            }, function (err) {
-                                    notifyService.showError("'Add project' failed", err.statusText);
-                            });
-                };
+                function toObject(inputArray) {
+                    var outputArrayAsJson = [];
+                    inputArray.forEach(function (element) {
+                        outputArrayAsJson.push({Name: element});
+                    });
+                    return outputArrayAsJson;
+                }
 
-                var getAllUsers = userService.getAllUsers()
-                    .then(function (allUsers) {
-                            $scope.allUsers = allUsers;
-                        }, function (err) {
-                            var serverError = err.data.error_description;
-                            notifyService.showError("Request failed", serverError);
-                        }
-                    );
+                //get Lead Id
+
+                return project
+            };
+
+
+  //todo DELLete
+            // $scope.val='';
+            //$scope.users = function(val) {
+            //    userService.getAllUsers()
+            //        .then(function (response) {
+            //            var filtered = [];
+            //            angular.forEach(response, function (item) {
+            //                if (item.Username.toLowerCase().indexOf(val) == 0) filtered.push(item);
+            //            });
+            //            $scope.allUsers = filtered;
+            //            $scope.all = filtered;
+            //            console.log(filtered)
+            //        }, function (err) {
+            //            notifyService.showError("'Add project' failed", err.statusText);
+            //        });
+            //}
+            //
+
+            $scope.addProject = function (project,id) {
+                project = convertToPureDate(project);
+                projectsService.addProject(project)
+                    .then(function () {
+                        notifyService.showInfo("Project added successful");
+                        $location.path('/projects');
+                    }, function (err) {
+                        notifyService.showError("'Add project' failed", err.statusText);
+                    });
+            };
+
+
+
+//ORIGINAL
+            var users = userService.getAllUsers()
+                .then(function (response) {
+                    $scope.allUsers = response;
+                }, function (err) {
+                    notifyService.showError(err.statusText);
+                });
+
 
         }
     ]);

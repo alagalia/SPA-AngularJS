@@ -1,15 +1,16 @@
 'use strict';
 
 var trackerApp = angular.module('trackerApp', [
-        'ngRoute','ui.bootstrap.pagination'
+        'ngRoute','ui.bootstrap.pagination', 'ui.bootstrap'
     ])
     .constant('BASE_URL', 'http://softuni-issue-tracker.azurewebsites.net/')
-    .constant('pageSize', 5)
+    .constant('pageSize', 10)
     .config(['$routeProvider',
         function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    templateUrl: 'views/welcome.html'
+                    templateUrl: 'views/welcome.html',
+                    controller: 'HomeCtrl'
                 })
 
                 .when('/login', {
@@ -19,13 +20,6 @@ var trackerApp = angular.module('trackerApp', [
                 .when('/register', {
                     templateUrl: 'views/register.html',
                     controller: 'HomeCtrl'
-                })
-                .when('/dashboard', {
-                    templateUrl: 'views/dashboard.html',
-                    controller: 'DashboardCtrl',
-                    data: {
-                        requireLogin: true
-                    }
                 })
                 .when('/projects', {
                     templateUrl: 'views/projects.html',

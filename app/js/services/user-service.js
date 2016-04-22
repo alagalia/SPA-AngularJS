@@ -5,31 +5,14 @@ trackerApp
         'BASE_URL',
         function ($http, $q, BASE_URL) {
 
+
+
             function getCurrentUser() {
 
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
                     url: BASE_URL + 'Users/me',
-                    headers: {
-                        Authorization: "Bearer "+sessionStorage["token"]
-                    }
-                };
-                $http(request)
-                    .then(function (response) {
-                        deferred.resolve(response.data)
-                    }, function (err) {
-                        deferred.reject(err)
-                    });
-                return deferred.promise;
-            }
-
-            function getAllUsers() {
-
-                var deferred = $q.defer();
-                var request = {
-                    method: 'GET',
-                    url: BASE_URL + 'Users/',
                     headers: {
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
@@ -103,6 +86,28 @@ trackerApp
                     });
                 return deferred.promise;
             }
+
+//================GET USERS================//
+            function getAllUsers() {
+
+                var deferred = $q.defer();
+                var request = {
+                    method: 'GET',
+                    url: BASE_URL + 'Users/',
+                    headers: {
+                        Authorization: "Bearer "+sessionStorage["token"]
+                    }
+                };
+                $http(request)
+                    .then(function (response) {
+                        deferred.resolve(response.data)
+                        var users = response.data;
+                    }, function (err) {
+                        deferred.reject(err)
+                    });
+                return deferred.promise;
+            }
+
 
 
             return {

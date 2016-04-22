@@ -86,12 +86,11 @@ trackerApp
             }
 
             //AJAX with QUERY for all issues
-            function getIssues(pageNumber) {
+            function getIssues(params) {
                 var deferred = $q.defer();
                 var request = {
                     method: 'GET',
-                    //url: BASE_URL + 'issues/?filter=Priority.Name == "' + priorityName + '"&pageSize='+ pageNumber + '&pageNumber=1',
-                    url: BASE_URL + 'issues/?filter=&pageSize=' + pageSize + '&pageNumber='+pageNumber,
+                    url: BASE_URL + 'issues/?filter=&pageSize=' + params.pageSize + '&pageNumber='+params.pageNumber,
                     headers: {
                         Authorization: "Bearer " + sessionStorage["token"]
                     }

@@ -19,7 +19,6 @@ trackerApp
                         Authorization: "Bearer "+sessionStorage["token"]
                     }
                 };
-                console.log(request.url)
 
                 $http(request)
                     .then(function(response){

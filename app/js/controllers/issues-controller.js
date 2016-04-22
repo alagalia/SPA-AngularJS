@@ -90,7 +90,7 @@ trackerApp.controller('IssuesCtrl', [
                 .then(function () {
                         notifyService.showInfo("Status changed! ");
                     }, function (err) {
-                        notifyService.showError("Status not changed!", err);
+                        notifyService.showError("Status not changed!", err.statusText);
                     }
                 );
         };

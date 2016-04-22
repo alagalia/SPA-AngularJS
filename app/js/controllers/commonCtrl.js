@@ -15,13 +15,29 @@ trackerApp
                 isAdmin :  sessionStorage.isAdmin
             };
 
-            userService.getAllUsers()
-                .then(function (allUsers) {
-                        $scope.allUsers = allUsers;
+            //getAllUsers and filter them
+            $scope.val='';
+            $scope.users = function(val) {
+                userService.getAllUsers()
+                    .then(function (response) {
+                        var filtered = [];
+                        angular.forEach(response, function (item) {
+                            if (item.Username.toLowerCase().indexOf(val) == 0) filtered.push(item);
+                        });
+                        $scope.allUsers = filtered;
                     }, function (err) {
-                        notifyService.showError("Request failed", err.statusText);
-                    }
-                );
+                        notifyService.showError("'Add project' failed", err.statusText);
+                    });
+            }
+
+            //todo DELLete
+            //userService.getAllUsers()
+            //    .then(function (allUsers) {
+            //            $scope.allUsers = allUsers;
+            //        }, function (err) {
+            //            notifyService.showError("Request failed", err.statusText);
+            //        }
+            //    );
 
             //todo autocomplete
             projectsService.getAllExistingLabels()

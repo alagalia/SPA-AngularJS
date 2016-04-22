@@ -17,7 +17,8 @@ trackerApp
                     .then(function (response) {
                             $scope.project = response.data;
                             $scope.priorities = response.data.Priorities;
-                            $scope.isLeader = authService.getLoggedUserName() === response.data.Lead.Username;
+                        $scope.leadUserName = response.data.Lead.Username;
+                        $scope.isLeader = authService.getLoggedUserName() === $scope.leadUserName;
                         }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
                         }
