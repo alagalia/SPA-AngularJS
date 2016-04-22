@@ -1,5 +1,6 @@
+<h2 class="page-header">EDIT project</h2>
 <div class="row logreg">
-    <div class="col-md-4 col-md-offset-1 border">
+    <div class="col-md-4 col-md-offset-4 border">
 
         <form name="editProjectForm">
 
@@ -40,11 +41,19 @@
 
               <br>
 
-                <label for="editProjectLeadId" ng-if="!isLeader"> Project Lead select: </label><br>
-                <label for="editProjectLeadId" ng-if="isLeader"> Project Lead is: YOU</label><br>
-                <select ng-model="project.LeadId" required="required" id="editProjectLeadId" ng-controller="CommonCtrl" ng-if="!isLeader">
-                    <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
-                </select>
+
+
+                <div  class="searchBox" ng-controller="CommonCtrl" ng-if="!isLeader">
+                    <label for="searchName"> Get name of user from Assignee input </label><br>
+                    <input type="text" ng-model="val"  id="searchName" placeholder="Name of user">
+                    <button ng-click="getAllUsers(val)"> search by name</button>
+
+                    <label for="addId"> Lead of project: </label><br>
+                    <select ng-model="project.LeadId" required="required" id="addId" >
+                        <option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>
+                    </select>
+                </div>
+
 
                 <br/>
                 <label for="editLabel"> Label </label><br>

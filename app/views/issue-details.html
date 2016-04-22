@@ -56,10 +56,10 @@
 
             <div class="row">
                 <div class="jumbotron col-md-9 col-lg-offset-1" ng-show="showComments">
-                    <p class="red" ng-if="!isAssignee"> You are not allowed to write a comment! You are not
+                    <p class="red" ng-if="!isAssignee && !isLeader"> You are not allowed to write a comment! You are not
                         assignee in
                         this issues.</p>
-                    <form name="addCommentForm" ng-if="isAssignee" style="margin-bottom: 30px">
+                    <form name="addCommentForm" ng-if="isAssignee || isLeader" style="margin-bottom: 30px">
                         <div class="form-group">
                             <textarea row="5"
                                       class="form-control"

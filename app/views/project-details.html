@@ -7,7 +7,7 @@
                 <span ng-if="isAssignee">|___Your are <strong class="red">Assignee</strong> of this issue ___|</span>
                 <p ng-if="admin">|___Your are <strong class="red">Admin </strong>___|</p>
                 <div>
-                    <a href="#/projects/{{project.Id}}/edit" ng-if="isLeader || admin">
+                    <a href="#/projects/{{project.Id}}/edit" ng-if="admin">
                         <button class="btn-group-lg">EDIT PROJECT</button>
                     </a>
                     <a href="#/projects/{{project.Id}}/add-issue" ng-if="isLeader || admin">

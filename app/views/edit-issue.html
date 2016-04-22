@@ -34,13 +34,10 @@
                        ng-model="issue.DueDate"
                        ng-value=issue.DueDate >
 
-                <!--<label for="editAssigneeId"> Assignee: </label><br>-->
-                <!--<select ng-model="issue.AssigneeId" required="required" id="editAssigneeId" ng-controller="CommonCtrl">-->
-                    <!--<option ng-repeat="user in allUsers | orderBy:'Username'" value="{{user.Id}}">{{user.Username}}</option>-->
-                <!--</select>-->
 
-                <div ng-controller="CommonCtrl">
-                    <input type="text" ng-model="val">
+                <div class="searchBox" ng-controller="CommonCtrl">
+                    <label for="searchName"> Get name of user from Assignee input </label><br>
+                    <input type="text" ng-model="val" id="searchName" placeholder="Name of user">
                     <button ng-click="getAllUsers(val)"> search by name</button>
 
                     <label for="addAssigneeId"> Assignee: </label><br>

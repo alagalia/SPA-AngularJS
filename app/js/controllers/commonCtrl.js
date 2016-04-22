@@ -25,7 +25,6 @@ trackerApp
             };
 
             $scope.getAllUsers = function(val){
-                console.log('aaaaaaaaaaaaaa')
                 userService.getAllUsers()
                 .then(function (allUsers) {
                         $scope.allUsers = filter(allUsers, val);

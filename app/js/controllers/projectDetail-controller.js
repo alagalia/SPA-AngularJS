@@ -33,6 +33,7 @@ trackerApp
                             $scope.project = response.data;
                             $scope.priorities = response.data.Priorities;
                             $scope.leadUserName = response.data.Lead.Username;
+                            $scope.leadId = response.data.Lead.Id;
                             $scope.isLeader = authService.getLoggedUserName() === $scope.leadUserName;
                         }, function (err) {
                             notifyService.showError("Request " + "'Get project by ID'" + " failed", err.statusText);
@@ -61,16 +62,18 @@ trackerApp
                     return outputArrayAsJson;
                 }
 
+                if($scope.isLeader){
+                    project.LeadId = $scope.leadId;
+                }
                 return project
             };
 
             $scope.editProject = function (object) {
-                //todo project. ProjectKey from first letters
                 object = convertData(object);
                 projectsService.editProject(object)
                     .then(function () {
                         notifyService.showInfo("Project edited successful");
-                        $location.path('/projects');
+                        $location.path('/');
                     }, function (err) {
                         notifyService.showError("'Edit project' failed", err.statusText);
                     });

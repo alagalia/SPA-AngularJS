@@ -97,6 +97,7 @@ trackerApp
             }
 
             function editProject(project){
+
                 var deferred = $q.defer();
                 var request = {
                     method: 'PUT',
