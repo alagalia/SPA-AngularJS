@@ -11,7 +11,6 @@ trackerApp
         'userService',
         function ($scope, $location, $window, $timeout, projectsService, notifyService, userService) {
 
-
             $scope.logOut = function logOut() {
                 userService.logOut()
                     .then(function () {

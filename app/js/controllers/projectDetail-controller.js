@@ -45,8 +45,6 @@ trackerApp
                          $scope.assignees =[];
                          $scope.issuesById.forEach(function(element){
                              if($scope.assignees.indexOf(element.Assignee.Username) === -1){
-                                 console.log($scope.assignees.indexOf(element))
-
                                  $scope.assignees.push(element.Assignee.Username)
                              }
                          });
@@ -82,6 +80,12 @@ trackerApp
                     }, function (err) {
                         notifyService.showError("'Edit project' failed", err.statusText);
                     });
+            };
+
+            $scope.greaterThan = function(prop, val){
+                return function(item){
+                    return item[prop] > val;
+                }
             };
 
             if (isNaN($routeParams.id)) {

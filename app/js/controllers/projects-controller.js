@@ -76,7 +76,6 @@ trackerApp
             //--------------START Pagination ---------------//
 
             //todo get number of projects from date base
-            $scope.numItems = 100;
             $scope.projectRequestParams = {
                 pageNumber: 1,
                 pageSize: pageSize

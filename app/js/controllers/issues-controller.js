@@ -26,7 +26,7 @@ trackerApp.controller('IssuesCtrl', [
                     availableStatus(response.data.Status.Id);
 
                     projectsService.getProjectById(response.data.Project.Id)
-                        .then(function(response){
+                        .then(function (response) {
                             var projectLead = response.data.Lead.Username;
                             $scope.isLeader = loggedUser == projectLead;
                         });
@@ -44,7 +44,7 @@ trackerApp.controller('IssuesCtrl', [
                 })
         }
 
-        $scope.addComment =  function addComment(text) {
+        $scope.addComment = function addComment(text) {
             issuesService.addComment(text, issueId)
                 .then(function success(response) {
                     notifyService.showInfo("Comment added successful");

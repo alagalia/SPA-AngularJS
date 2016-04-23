@@ -7,8 +7,6 @@ trackerApp
         'BASE_URL',
         'pageSize',
         function($http, $q, BASE_URL, pageSize){
-            //todo AJAX to REST
-
 
             function getAllProjects(params){
                 var deferred = $q.defer();
