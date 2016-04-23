@@ -29,6 +29,11 @@
                     <option ng-repeat="as in assignees" >{{as}}</option>
                 </select>
             </div>
+
+            <div class="col-md-2">
+                <label>DueDate</label>
+                <input ng-model="dueDate">
+            </div>
         </div>
 
 
@@ -45,7 +50,7 @@
                 <th>Status</th>
                 </thead>
                 <tbody>
-                <tr ng-repeat="issue in issuesById | filter : assignee">
+                <tr ng-repeat="issue in issuesById | filter : assignee | filter :{DueDate :<= dueDate}">
                     <td><a href="#/issues/{{issue.Id}}/edit">{{ issue.Title}}</a></td>
                     <td>{{ issue.Description }}</td>
                     <td>{{ issue.DueDate}}</td>
