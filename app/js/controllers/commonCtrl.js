@@ -36,10 +36,10 @@ trackerApp
             };
 
             //todo autocomplete
-
             //projectsService.getAllExistingLabels()
             //    .then(function (allLabels) {
             //            $scope.allLabels = allLabels;
+            //        console.log(allLabels)
             //        }, function (err) {
             //            notifyService.showError("Request failed", err.statusText);
             //        }
